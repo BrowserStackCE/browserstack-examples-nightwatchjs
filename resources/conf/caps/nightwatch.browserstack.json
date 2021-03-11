@@ -1,0 +1,61 @@
+{
+	"src_folders": ["src/tests/suites"],
+	"output_folder": "results",
+
+	"webdriver": {
+		"keep_alive": true,
+		"timeout_options": {
+			"timeout": 100000,
+			"retry_attempts": 3
+		}
+	},
+
+	"test_workers": {
+		"enabled": true,
+		"workers": "auto",
+		"node_options": "inherit"
+	},
+
+	"live_output": false,
+
+	"test_settings": {
+		"test_runner": {
+			"type": "mocha"
+		},
+		"default": {
+			"launch_url": "https://nightwatchjs.org"
+		},
+
+		"browserstack": {
+			"selenium": {
+				"host": "hub-cloud.browserstack.com",
+				"port": 443
+			},
+
+			"desiredCapabilities": {
+				"browserName": "chrome"
+			}
+		},
+
+		"browserstack.chrome": {
+			"extends": "browserstack",
+			"desiredCapabilities": {
+				"project": "browserstack-examples",
+				"build": "browserstack-examples-nightwatchjs",
+				"browserName": "chrome",
+				"browserstack.video": "true"
+			}
+		},
+
+		"browserstack.firefox": {
+			"extends": "browserstack",
+			"desiredCapabilities": {
+				"project": "browserstack-examples",
+				"build": "browserstack-examples-nightwatchjs",
+				"browserName": "firefox",
+				"os": "OS X",
+				"osVersion": "Big Sur"
+			}
+		}
+	}
+}
