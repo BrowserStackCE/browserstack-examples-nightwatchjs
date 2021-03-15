@@ -1,18 +1,10 @@
-// module.exports = {
-// 	"Google's Search Functionality": function (browser) {
-// 		browser
-// 			.url("https://www.google.com/ncr")
-// 			.waitForElementVisible("body", 1000)
-// 			.setValue("input[type=text]", "BrowserStack")
-// 			.click("input[name=btnK]")
-// 			.pause(1000)
-// 			.assert.title("BrowserStack - Google Search")
-// 			.end();
-// 	},
-// };
-
 describe("Login Tests", () => {
-	this.tags = ["login", "smoke"];
+	this.tags = ["login"];
+
+	beforeEach((browser, done) => {
+		browser.url("https://bstackdemo.com").assert.title("StackDemo");
+		done();
+	});
 
 	it("Locked Account Test", (browser) => {
 		browser.url("https://bstackdemo.com").assert.title("StackDemo");
