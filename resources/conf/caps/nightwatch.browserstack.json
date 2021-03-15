@@ -20,7 +20,10 @@
 
 	"test_settings": {
 		"test_runner": {
-			"type": "mocha"
+			"type": "mocha",
+			"parallel": true,
+			"jobs": 10,
+			"timeout": 100000
 		},
 		"default": {
 			"launch_url": "https://nightwatchjs.org"
