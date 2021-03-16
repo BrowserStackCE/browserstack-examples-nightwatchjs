@@ -6,12 +6,14 @@ describe("Login Tests", () => {
 		done();
 	});
 
+	afterEach((browser, done) => {
+		browser.execute("sessionStorage.clear()");
+		done();
+	});
+
 	it("Locked Account Test", (browser) => {
-		browser.url("https://bstackdemo.com").assert.title("StackDemo");
-
-		browser.click("#signin");
-
 		browser
+			.click("#signin")
 			.clearValue("#username input")
 			.setValue("#username input", "locked_user\n")
 			.clearValue("#password input")
@@ -22,10 +24,12 @@ describe("Login Tests", () => {
 
 	it("Navigate to Favourites", (browser) => {
 		browser
-			.url("https://bstackdemo.com")
 			.click("#favourites")
 			.assert.urlEquals("https://bstackdemo.com/signin?favourites=true");
 	});
 
-	after((browser) => browser.end());
+	after((browser, done) => {
+		browser.end();
+		done();
+	});
 });

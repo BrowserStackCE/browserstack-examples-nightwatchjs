@@ -6,6 +6,11 @@ describe("Product Tests", () => {
 		done();
 	});
 
+	afterEach((browser, done) => {
+		browser.execute("sessionStorage.clear()");
+		done();
+	});
+
 	it("Apple And Samsung Filter", (browser) => {
 		browser.expect.elements(".shelf-item__title").count.to.equal(25);
 
@@ -28,5 +33,8 @@ describe("Product Tests", () => {
 			.text.to.equal("399");
 	});
 
-	after((browser) => browser.end());
+	after((browser, done) => {
+		browser.end();
+		done();
+	});
 });
