@@ -5,9 +5,10 @@
 	"license": "MIT",
 	"scripts": {
 		"test:browserstack": "nightwatch -c resources/conf/caps/nightwatch.browserstack.json --env browserstack.chrome",
-		"test:browserstack:user": "nightwatch -c resources/conf/caps/nightwatch.browserstack.json --env browserstack.chrome --tag user",
-		"test:browserstack:login": "nightwatch -c resources/conf/caps/nightwatch.browserstack.json --env browserstack.chrome,browserstack.firefox --tag login",
-		"test:browserstack:product": "nightwatch -c resources/conf/caps/nightwatch.browserstack.json --env browserstack.chrome,browserstack.firefox --tag product",
+		"test:browserstack:offers": "yarn test:browserstack --tag offers",
+		"test:browserstack:user": "yarn test:browserstack --tag user",
+		"test:browserstack:login": "yarn test:browserstack --tag login",
+		"test:browserstack:product": "yarn test:browserstack --tag product",
 		"test:self_hosted": "nightwatch -c resources/conf/caps/nightwatch.self_hosted.json --env self_hosted.chrome,self_hosted.firefox --reporter node_modules/nightwatch-allure-adapter/reporter.js"
 	},
 	"devDependencies": {
