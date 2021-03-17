@@ -12,11 +12,13 @@
 
 	"test_workers": {
 		"enabled": true,
-		"workers": "5",
+		"workers": 10,
 		"node_options": "inherit"
 	},
 
 	"live_output": false,
+
+	"page_objects_path": "src/app/pages/",
 
 	"test_settings": {
 		"test_runner": {
@@ -46,6 +48,7 @@
 				"project": "browserstack-examples",
 				"build": "browserstack-examples-nightwatchjs",
 				"browserName": "chrome",
+				"resolution": "1920x1080",
 				"browserstack.video": "true",
 				"browserstack.geoLocation": "IN",
 				"goog:chromeOptions": {
