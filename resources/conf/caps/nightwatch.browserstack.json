@@ -1,0 +1,73 @@
+{
+	"src_folders": ["src/tests/suites"],
+	"output_folder": "results",
+
+	"webdriver": {
+		"keep_alive": true,
+		"timeout_options": {
+			"timeout": 100000,
+			"retry_attempts": 3
+		}
+	},
+
+	"test_workers": {
+		"enabled": true,
+		"workers": 10,
+		"node_options": "inherit"
+	},
+
+	"live_output": false,
+
+	"page_objects_path": "src/app/pages/",
+
+	"test_settings": {
+		"test_runner": {
+			"type": "mocha",
+			"parallel": true,
+			"jobs": 10,
+			"timeout": 100000
+		},
+		"default": {
+			"launch_url": "https://bstackdemo.com"
+		},
+
+		"browserstack": {
+			"selenium": {
+				"host": "hub-cloud.browserstack.com",
+				"port": 443
+			},
+
+			"desiredCapabilities": {
+				"browserName": "chrome"
+			}
+		},
+
+		"browserstack.chrome": {
+			"extends": "browserstack",
+			"desiredCapabilities": {
+				"project": "browserstack-examples",
+				"build": "browserstack-examples-nightwatchjs",
+				"browserName": "chrome",
+				"resolution": "1920x1080",
+				"browserstack.video": "true",
+				"browserstack.geoLocation": "IN",
+				"goog:chromeOptions": {
+					"prefs": {
+						"profile.managed_default_content_settings.geolocation": 1
+					}
+				}
+			}
+		},
+
+		"browserstack.firefox": {
+			"extends": "browserstack",
+			"desiredCapabilities": {
+				"project": "browserstack-examples",
+				"build": "browserstack-examples-nightwatchjs",
+				"browserName": "firefox",
+				"os": "OS X",
+				"osVersion": "Big Sur"
+			}
+		}
+	}
+}

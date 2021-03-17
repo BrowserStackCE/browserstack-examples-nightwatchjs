@@ -1,0 +1,63 @@
+{
+	"src_folders": ["src/tests/suites"],
+	"output_folder": "results",
+
+	"webdriver": {
+		"keep_alive": true,
+		"timeout_options": {
+			"timeout": 60000,
+			"retry_attempts": 3
+		}
+	},
+
+	"test_workers": {
+		"enabled": true,
+		"workers": "2",
+		"node_options": "inherit"
+	},
+
+	"page_objects_path": "src/app/pages/",
+
+	"test_settings": {
+		"test_runner": {
+			"type": "mocha",
+			"parallel": true,
+			"jobs": 10,
+			"timeout": 100000
+		},
+
+		"default": {
+			"launch_url": "https://bstackdemo.com"
+		},
+
+		"self_hosted": {
+			"selenium": {
+				"host": "localhost",
+				"port": 4444
+			},
+
+			"desiredCapabilities": {
+				"browserName": "chrome"
+			}
+		},
+
+		"self_hosted.chrome": {
+			"extends": "self_hosted",
+			"desiredCapabilities": {
+				"browserName": "chrome",
+				"goog:chromeOptions": {
+					"prefs": {
+						"profile.managed_default_content_settings.geolocation": 1
+					}
+				}
+			}
+		},
+
+		"self_hosted.firefox": {
+			"extends": "self_hosted",
+			"desiredCapabilities": {
+				"browserName": "firefox"
+			}
+		}
+	}
+}
