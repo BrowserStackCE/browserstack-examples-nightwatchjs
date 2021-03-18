@@ -2,7 +2,7 @@ describe("Login Tests", () => {
 	this.tags = ["login"];
 
 	beforeEach((browser, done) => {
-		browser.url("https://bstackdemo.com").assert.title("StackDemo");
+		browser.url(browser.launchUrl).assert.title("StackDemo");
 		done();
 	});
 
@@ -22,7 +22,7 @@ describe("Login Tests", () => {
 			.assert.containsText(".api-error", "Your account has been locked.");
 	});
 
-	it("Navigate to Favourites", (browser) => {
+	it("Navigate to Favourites Fails", (browser) => {
 		browser
 			.click("#favourites")
 			.assert.urlEquals("https://bstackdemo.com/signin?favourites=true");

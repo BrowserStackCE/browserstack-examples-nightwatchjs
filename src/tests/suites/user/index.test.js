@@ -2,7 +2,7 @@ describe("User Tests", () => {
 	this.tags = ["user"];
 
 	beforeEach((browser, done) => {
-		browser.url("https://bstackdemo.com").assert.title("StackDemo");
+		browser.url(browser.launchUrl).assert.title("StackDemo");
 		done();
 	});
 

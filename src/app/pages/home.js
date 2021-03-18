@@ -1,5 +1,7 @@
 module.exports = {
-	url: "https://bstackdemo.com",
+	url: function () {
+		return this.api.launchUrl;
+	},
 	elements: {
 		cartButton: { selector: ".bag--float-cart-closed" },
 		checkoutButton: { selector: ".buy-btn" },

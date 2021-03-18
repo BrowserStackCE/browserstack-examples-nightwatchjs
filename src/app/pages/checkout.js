@@ -1,5 +1,7 @@
 module.exports = {
-	url: "https://bstackdemo.com/checkout",
+	url: function () {
+		return this.api.launchUrl + "/checkout";
+	},
 	elements: {
 		firstNameInput: "#firstNameInput",
 		lastNameInput: "#lastNameInput",
@@ -17,7 +19,7 @@ module.exports = {
 				province,
 				zipcode
 			) {
-				this.assert.urlEquals(this.url);
+				this.assert.urlEquals(this.url());
 				return this.clearValue("@firstNameInput")
 					.setValue("@firstNameInput", firstName)
 					.clearValue("@lastNameInput")

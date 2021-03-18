@@ -1,5 +1,7 @@
 module.exports = {
-	url: "https://bstackdemo.com/signin",
+	url: function () {
+		return this.api.launchUrl + "/signin";
+	},
 	elements: {
 		usernameField: { selector: "#username input" },
 		passwordField: { selector: "#password input" },

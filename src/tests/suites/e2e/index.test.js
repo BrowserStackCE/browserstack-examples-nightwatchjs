@@ -1,11 +1,8 @@
 describe("e2e Test", () => {
-	this.tags = ["e2e"];
+	this.tags = ["e2e", "single"];
 
 	beforeEach((browser, done) => {
-		browser
-			.windowMaximize()
-			.url("https://bstackdemo.com")
-			.assert.title("StackDemo");
+		browser.windowMaximize().url(browser.launchUrl).assert.title("StackDemo");
 		done();
 	});
 
