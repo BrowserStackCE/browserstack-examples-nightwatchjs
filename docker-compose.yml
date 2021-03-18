@@ -68,7 +68,7 @@ services:
     image: selenium/hub:4.0.0
     container_name: selenium-hub
     environment:
-       - GRID_MAX_SESSION=50
+      - GRID_MAX_SESSION=50
     ports:
       - "4442:4442"
       - "4443:4443"
