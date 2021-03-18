@@ -9,3 +9,13 @@
 5. `yarn test:browserstack:login` - Run login test suite
 6. `yarn test:browserstack:product` - Run product test suite
 7. `docker-compose up -d && yarn test:self_hosted && docker-compose down` - Run all test suites on self-hosted docker
+
+## Run acc to profiles
+
+1. `yarn test:browserstack:single` - Run single test on BS
+2. `yarn test:onprem:single` - Run single test on prem
+3. `yarn test:docker:single` - Run single test on docker
+4. `yarn test:browserstack:parallel` - Run entire suite in parallel on BS
+5. `yarn test:onprem:suite` - Run entire suite on prem
+6. `yarn test:docker:parallel` - Run entire suite in parallel on docker
+7. `yarn test:browserstack:parallel_multiple` - Run entire suite in parallel on BS across different browsers
