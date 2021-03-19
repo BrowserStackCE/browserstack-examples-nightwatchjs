@@ -5,33 +5,35 @@
 	"chrome": {
 		"browserName": "chrome",
 		"resolution": "1920x1080",
-		"browserstack.video": "true",
+		"browserstack.video": true,
 		"browserstack.geoLocation": "IN",
 		"goog:chromeOptions": {
 			"prefs": {
 				"profile.managed_default_content_settings.geolocation": 1
 			}
-		}
+		},
+		"browserstack.local": true,
+		"browserstack.localIdentifier": "id"
 	},
 
 	"firefox": {
 		"browserName": "firefox",
 		"resolution": "1920x1080",
-		"browserstack.video": "true",
+		"browserstack.video": true,
 		"browserstack.geoLocation": "IN"
 	},
 
 	"edge": {
 		"browserName": "edge",
 		"resolution": "1920x1080",
-		"browserstack.video": "true",
+		"browserstack.video": true,
 		"browserstack.geoLocation": "IN"
 	},
 
 	"safari": {
 		"browserName": "safari",
 		"resolution": "1920x1080",
-		"browserstack.video": "true",
+		"browserstack.video": true,
 		"browserstack.geoLocation": "IN"
 	}
 }

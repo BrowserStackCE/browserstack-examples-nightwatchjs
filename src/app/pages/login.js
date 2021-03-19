@@ -12,7 +12,8 @@ module.exports = {
 				return this.clearValue("@usernameField")
 					.setValue("@usernameField", username + "\n")
 					.clearValue("@passwordField")
-					.setValue("@passwordField", password + "\n")
+					.setValue("@passwordField", password)
+					.click("#react-select-3-option-0-0")
 					.click("#login-btn");
 			},
 		},

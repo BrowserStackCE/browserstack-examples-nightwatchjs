@@ -17,7 +17,8 @@ describe("Login Tests", () => {
 			.clearValue("#username input")
 			.setValue("#username input", "locked_user\n")
 			.clearValue("#password input")
-			.setValue("#password input", "testingisfun99\n")
+			.setValue("#password input", "testingisfun99")
+			.click("#react-select-3-option-0-0")
 			.click("#login-btn")
 			.assert.containsText(".api-error", "Your account has been locked.");
 	});
@@ -25,7 +26,7 @@ describe("Login Tests", () => {
 	it("Navigate to Favourites Fails", (browser) => {
 		browser
 			.click("#favourites")
-			.assert.urlEquals("https://bstackdemo.com/signin?favourites=true");
+			.assert.urlEquals(browser.launchUrl + "/signin?favourites=true");
 	});
 
 	after((browser, done) => {
