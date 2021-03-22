@@ -41,7 +41,7 @@ for (let key in bsConfig) {
 				desiredCapabilities: { ...browserstackRunConfig.desiredCapabilities },
 			};
 			if (browserCaps["defaultUrl"]) {
-				browsers.launch_url = browserCaps["defaultUrl"];
+				browsers[key].launch_url = browserCaps["defaultUrl"];
 				delete browserCaps["defaultUrl"];
 			}
 			for (let cap in browserCaps) {
