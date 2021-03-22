@@ -19,4 +19,6 @@
 5. `yarn test:onprem:suite` - Run entire suite on prem
 6. `yarn test:docker:parallel` - Run entire suite in parallel on docker
 7. `yarn test:browserstack:parallel_multiple` - Run entire suite in parallel on BS across different browsers
-8. BrowserStackLocal need not be configured as NightWatch does that already. Just pass "browserstack.local" as true in capabilities
+8. `yarn test:browserstack:local` - Run locally hosted app single test on browserstack
+9. `yarn test:browserstack:local_parallel` - Run locally hosted app suite tests on browserstack in parallel
+10. `yarn test:browserstack:local_parallel_multiple` - Run locally hosted app suite tests on browserstack in parallel across different browsers

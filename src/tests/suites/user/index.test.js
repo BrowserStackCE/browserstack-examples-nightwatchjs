@@ -11,19 +11,6 @@ describe("User Tests", () => {
 		done();
 	});
 
-	it("Item Images not available for 'image_not_loading_user'", (browser) => {
-		browser
-			.click("#signin")
-			.clearValue("#username input")
-			.setValue("#username input", "image_not_loading_user\n")
-			.clearValue("#password input")
-			.setValue("#password input", "testingisfun99")
-			.click("#react-select-3-option-0-0")
-			.click("#login-btn")
-			.pause(1000)
-			.assert.containsText(".username", "image_not_loading_user");
-	});
-
 	it("Number of orders != 0", (browser) => {
 		browser
 			.refresh()
@@ -59,8 +46,34 @@ describe("User Tests", () => {
 			.assert.containsText("p.shelf-item__title", "iPhone 12");
 	});
 
+	it("Item Images not available for 'image_not_loading_user'", (browser) => {
+		browser
+			.click("#signin")
+			.clearValue("#username input")
+			.setValue("#username input", "image_not_loading_user\n")
+			.clearValue("#password input")
+			.setValue("#password input", "testingisfun99")
+			.click("#react-select-3-option-0-0")
+			.click("#login-btn")
+			.pause(1000)
+			.assert.not.containsText(".username", "image_not_loading_user");
+	});
+
 	after((browser, done) => {
-		browser.end();
+		const errors = browser.currentTest.results.errors,
+			failed = browser.currentTest.results.failed,
+			retries = browser.currentTest.results.retries || 0,
+			passed = browser.currentTest.results.passed,
+			skipped = browser.currentTest.results.skipped;
+
+		browser
+			.execute(
+				`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"${
+					errors + failed - retries > 0 ? "failed" : "passed"
+				}","reason": "${errors} - errors ${failed} - failed - ${retries} - retried ${passed} - passed ${skipped} - skipped"}}`
+			)
+			.pause(1000)
+			.end();
 		done();
 	});
 });
