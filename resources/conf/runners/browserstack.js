@@ -9,7 +9,8 @@ if (process.env.BROWSERSTACK_ACCESS_KEY !== undefined) {
 }
 
 const browsers = {};
-const launchUrl = defaultConf.test_settings.default.launch_url;
+const launchUrl =
+	bsConfig.defaultUrl || defaultConf.test_settings.default.launch_url;
 const browserstackRunConfig = { launch_url: launchUrl };
 
 for (let key in bsConfig) {
@@ -39,6 +40,10 @@ for (let key in bsConfig) {
 				...browserstackRunConfig,
 				desiredCapabilities: { ...browserstackRunConfig.desiredCapabilities },
 			};
+			if (browserCaps["defaultUrl"]) {
+				browsers.launch_url = browserCaps["defaultUrl"];
+				delete browserCaps["defaultUrl"];
+			}
 			for (let cap in browserCaps) {
 				browsers[key]["desiredCapabilities"][cap] = browserCaps[cap];
 			}

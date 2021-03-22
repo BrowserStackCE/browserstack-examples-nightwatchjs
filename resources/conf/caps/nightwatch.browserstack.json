@@ -2,6 +2,7 @@
 	"project": "browserstack-examples",
 	"build": "browserstack-examples-nightwatchjs",
 	"server": "hub-cloud.browserstack.com",
+	"defaultUrl": "https://bstackdemo.com",
 	"chrome": {
 		"browserName": "chrome",
 		"resolution": "1920x1080",
@@ -11,9 +12,7 @@
 			"prefs": {
 				"profile.managed_default_content_settings.geolocation": 1
 			}
-		},
-		"browserstack.local": true,
-		"browserstack.localIdentifier": "id"
+		}
 	},
 
 	"firefox": {
@@ -35,5 +34,55 @@
 		"resolution": "1920x1080",
 		"browserstack.video": true,
 		"browserstack.geoLocation": "IN"
+	},
+
+	"chrome.local": {
+		"browserName": "chrome",
+		"resolution": "1920x1080",
+		"browserstack.video": true,
+		"browserstack.geoLocation": "IN",
+		"goog:chromeOptions": {
+			"prefs": {
+				"profile.managed_default_content_settings.geolocation": 1
+			}
+		},
+		"browserstack.local": true,
+		"browserstack.localIdentifier": "id-chrome",
+		"defaultUrl": "http://localhost:3000"
+	},
+
+	"firefox.local": {
+		"browserName": "firefox",
+		"resolution": "1920x1080",
+		"browserstack.video": true,
+		"browserstack.geoLocation": "IN",
+		"browserstack.local": true,
+		"browserstack.localIdentifier": "id-firefox",
+		"defaultUrl": "http://localhost:3000"
+	},
+
+	"edge.local": {
+		"browserName": "edge",
+		"resolution": "1920x1080",
+		"browserstack.video": true,
+		"browserstack.geoLocation": "IN",
+		"goog:chromeOptions": {
+			"prefs": {
+				"profile.managed_default_content_settings.geolocation": 1
+			}
+		},
+		"browserstack.local": true,
+		"browserstack.localIdentifier": "id-edge",
+		"defaultUrl": "http://localhost:3000"
+	},
+
+	"safari.local": {
+		"browserName": "safari",
+		"resolution": "1920x1080",
+		"browserstack.video": true,
+		"browserstack.geoLocation": "IN",
+		"browserstack.local": true,
+		"browserstack.localIdentifier": "id-safari",
+		"defaultUrl": "http://localhost:3000"
 	}
 }

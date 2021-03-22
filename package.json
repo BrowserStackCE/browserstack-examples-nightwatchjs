@@ -13,17 +13,21 @@
 		"test:docker": "nightwatch -c resources/conf/runners/docker.js --env chrome,edge,opera",
 		"test:onprem": "nightwatch -c resources/conf/runners/on-prem.js",
 		"test:browserstack:single": "nightwatch -c resources/conf/runners/browserstack.js --env chrome --tag single",
-		"test:docker:single": "nightwatch -c resources/conf/runners/browserstack.js --env chrome --tag single",
+		"test:docker:single": "nightwatch -c resources/conf/runners/docker.js --env chrome --tag single",
 		"test:onprem:single": "nightwatch -c resources/conf/runners/on-prem.js --tag single",
 		"test:browserstack:parallel": "nightwatch -c resources/conf/runners/browserstack.js --env edge --parallel",
-		"test:docker:parallel": "nightwatch -c resources/conf/runners/browserstack.js --env chrome --parallel",
+		"test:docker:parallel": "nightwatch -c resources/conf/runners/docker.js --env chrome --parallel",
 		"test:onprem:suite": "nightwatch -c resources/conf/runners/on-prem.js",
-		"test:browserstack:parallel_multiple": "nightwatch -c resources/conf/runners/browserstack.js --env chrome,edge,safari --parallel"
+		"test:browserstack:parallel_multiple": "nightwatch -c resources/conf/runners/browserstack.js --env chrome,edge,safari --parallel",
+		"test:browserstack:local": "nightwatch -c resources/conf/runners/browserstack.js --env chrome.local --tag single",
+		"test:browserstack:local_parallel": "nightwatch -c resources/conf/runners/browserstack.js --env chrome.local --parallel",
+		"test:browserstack:local_parallel_multiple": "nightwatch -c resources/conf/runners/browserstack.js --env chrome.local,edge.local,safari.local --parallel"
 	},
 	"devDependencies": {
 		"chromedriver": "^89.0.0",
 		"eslint": "^7.21.0",
 		"geckodriver": "^1.22.2",
+		"mochawesome": "^6.2.2",
 		"nightwatch": "^1.5.1"
 	}
 }

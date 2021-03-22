@@ -9,7 +9,12 @@ module.exports = {
 			type: "mocha",
 			parallel: true,
 			jobs: 10,
-			timeout: 100000,
+			timeout: 9000000,
+			reporter: "mochawesome",
+			reporterOptions: {
+				reportDir: "results",
+				require: "mochawesome/register",
+			},
 		},
 
 		default: {
