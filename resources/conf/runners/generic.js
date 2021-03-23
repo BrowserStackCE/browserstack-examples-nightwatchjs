@@ -3,6 +3,7 @@ module.exports = {
 	output_folder: "results",
 
 	page_objects_path: "src/app/pages/",
+	live_output: "true",
 
 	test_settings: {
 		test_runner: {
@@ -10,11 +11,6 @@ module.exports = {
 			parallel: true,
 			jobs: 10,
 			timeout: 9000000,
-			reporter: "mochawesome",
-			reporterOptions: {
-				reportDir: "results",
-				require: "mochawesome/register",
-			},
 		},
 
 		default: {

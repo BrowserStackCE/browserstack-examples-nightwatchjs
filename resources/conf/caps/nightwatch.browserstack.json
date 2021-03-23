@@ -47,7 +47,8 @@
 			}
 		},
 		"browserstack.local": true,
-		"browserstack.localIdentifier": "id-chrome",
+		"browserstack.networkLogs": true,
+		"browserstack.localIdentifier": "id",
 		"defaultUrl": "http://localhost:3000"
 	},
 
