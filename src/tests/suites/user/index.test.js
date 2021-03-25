@@ -1,17 +1,21 @@
+const userData = require("../../../../resources/data/users.json");
+
 describe("User Tests", () => {
 	this.tags = ["user"];
 
 	beforeEach((browser, done) => {
+		if (!browser.options.desiredCapabilities.real_mobile) {
+			browser.windowMaximize();
+		}
 		browser
-			.windowMaximize()
 			.url(browser.launchUrl)
-			.waitForElementVisible(".shelf-item")
+			.waitForElementPresent(".shelf-item")
 			.assert.title("StackDemo");
 		done();
 	});
 
 	afterEach((browser, done) => {
-		browser.execute("sessionStorage.clear()");
+		browser.execute("sessionStorage.clear()").pause(100);
 		done();
 	});
 
@@ -20,10 +24,11 @@ describe("User Tests", () => {
 			.refresh()
 			.click("#signin")
 			.clearValue("#username input")
-			.setValue("#username input", "existing_orders_user\n")
+			.setValue("#username input", "existing_orders_user")
+			.click(userData.existing_orders_user.selector)
 			.clearValue("#password input")
-			.setValue("#password input", "testingisfun99")
-			.click("#react-select-3-option-0-0")
+			.setValue("#password input", userData.existing_orders_user.password)
+			.click(userData[userData.existing_orders_user.password].selector)
 			.click("#login-btn")
 			.pause(1000)
 			.assert.containsText(".username", "existing_orders_user")
@@ -37,10 +42,11 @@ describe("User Tests", () => {
 			.refresh()
 			.click("#signin")
 			.clearValue("#username input")
-			.setValue("#username input", "existing_orders_user\n")
+			.setValue("#username input", "existing_orders_user")
+			.click(userData.existing_orders_user.selector)
 			.clearValue("#password input")
-			.setValue("#password input", "testingisfun99")
-			.click("#react-select-3-option-0-0")
+			.setValue("#password input", userData.existing_orders_user.password)
+			.click(userData[userData.existing_orders_user.password].selector)
 			.click("#login-btn")
 			.pause(1000)
 			.assert.containsText(".username", "existing_orders_user")
@@ -54,10 +60,11 @@ describe("User Tests", () => {
 		browser
 			.click("#signin")
 			.clearValue("#username input")
-			.setValue("#username input", "image_not_loading_user\n")
+			.setValue("#username input", "image_not_loading_user")
+			.click(userData.image_not_loading_user.selector)
 			.clearValue("#password input")
-			.setValue("#password input", "testingisfun99")
-			.click("#react-select-3-option-0-0")
+			.setValue("#password input", userData.image_not_loading_user.password)
+			.click(userData[userData.image_not_loading_user.password].selector)
 			.click("#login-btn")
 			.pause(1000)
 			.assert.not.containsText(".username", "image_not_loading_user");

@@ -1,17 +1,21 @@
+const userData = require("../../../../resources/data/users.json");
+
 describe("Login Tests", () => {
 	this.tags = ["login"];
 
 	beforeEach((browser, done) => {
+		if (!browser.options.desiredCapabilities.real_mobile) {
+			browser.windowMaximize();
+		}
 		browser
-			.windowMaximize()
 			.url(browser.launchUrl)
-			.waitForElementVisible(".shelf-item")
+			.waitForElementPresent(".shelf-item")
 			.assert.title("StackDemo");
 		done();
 	});
 
 	afterEach((browser, done) => {
-		browser.execute("sessionStorage.clear()");
+		browser.execute("sessionStorage.clear()").pause(100);
 		done();
 	});
 
@@ -19,10 +23,11 @@ describe("Login Tests", () => {
 		browser
 			.click("#signin")
 			.clearValue("#username input")
-			.setValue("#username input", "locked_user\n")
+			.setValue("#username input", "locked_user")
+			.click(userData.locked_user.selector)
 			.clearValue("#password input")
 			.setValue("#password input", "testingisfun99")
-			.click("#react-select-3-option-0-0")
+			.click(userData[userData.locked_user.password].selector)
 			.click("#login-btn")
 			.assert.containsText(".api-error", "Your account has been locked.");
 	});

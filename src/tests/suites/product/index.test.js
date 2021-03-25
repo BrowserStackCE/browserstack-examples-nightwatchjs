@@ -2,16 +2,18 @@ describe("Product Tests", () => {
 	this.tags = ["product"];
 
 	beforeEach((browser, done) => {
+		if (!browser.options.desiredCapabilities.real_mobile) {
+			browser.windowMaximize();
+		}
 		browser
-			.windowMaximize()
 			.url(browser.launchUrl)
-			.waitForElementVisible(".shelf-item")
+			.waitForElementPresent(".shelf-item")
 			.assert.title("StackDemo");
 		done();
 	});
 
 	afterEach((browser, done) => {
-		browser.execute("sessionStorage.clear()");
+		browser.execute("sessionStorage.clear()").pause(100);
 		done();
 	});
 

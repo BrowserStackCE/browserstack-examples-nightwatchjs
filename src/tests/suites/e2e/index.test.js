@@ -2,23 +2,25 @@ describe("e2e Test", () => {
 	this.tags = ["e2e", "single"];
 
 	beforeEach((browser, done) => {
+		if (!browser.options.desiredCapabilities.real_mobile) {
+			browser.windowMaximize();
+		}
 		browser
-			.windowMaximize()
 			.url(browser.launchUrl)
-			.waitForElementVisible(".shelf-item")
+			.waitForElementPresent(".shelf-item")
 			.assert.title("StackDemo");
 		done();
 	});
 
 	afterEach((browser, done) => {
-		browser.execute("sessionStorage.clear()");
+		browser.execute("sessionStorage.clear()").pause(100);
 		done();
 	});
 
 	it("Testing buy flow", (browser) => {
 		let loginPage = browser.page.login();
 
-		loginPage.navigate().login("fav_user", "testingisfun99");
+		loginPage.navigate().login("fav_user");
 
 		let homePage = browser.page.home();
 

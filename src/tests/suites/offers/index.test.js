@@ -1,17 +1,21 @@
+const userData = require("../../../../resources/data/users.json");
+
 describe("Offers Test", () => {
 	this.tags = ["offers"];
 
 	beforeEach((browser, done) => {
+		if (!browser.options.desiredCapabilities.real_mobile) {
+			browser.windowMaximize();
+		}
 		browser
-			.windowMaximize()
 			.url(browser.launchUrl)
-			.waitForElementVisible(".shelf-item")
+			.waitForElementPresent(".shelf-item")
 			.assert.title("StackDemo");
 		done();
 	});
 
 	afterEach((browser, done) => {
-		browser.execute("sessionStorage.clear()");
+		browser.execute("sessionStorage.clear()").pause(100);
 		done();
 	});
 
@@ -26,10 +30,11 @@ describe("Offers Test", () => {
 		browser
 			.click("#signin")
 			.clearValue("#username input")
-			.setValue("#username input", "fav_user\n")
+			.setValue("#username input", "fav_user")
+			.click(userData.fav_user.selector)
 			.clearValue("#password input")
-			.setValue("#password input", "testingisfun99")
-			.click("#react-select-3-option-0-0")
+			.setValue("#password input", userData.fav_user.password)
+			.click(userData[userData.fav_user.password].selector)
 			.click("#login-btn")
 			.pause(1000)
 			.click("#offers")
