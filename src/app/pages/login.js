@@ -1,3 +1,5 @@
+const userData = require("../../../resources/data/users.json");
+
 module.exports = {
 	url: function () {
 		return this.api.launchUrl + "/signin";
@@ -8,12 +10,13 @@ module.exports = {
 	},
 	commands: [
 		{
-			login: function (username, password) {
+			login: function (username) {
 				return this.clearValue("@usernameField")
-					.setValue("@usernameField", username + "\n")
+					.setValue("@usernameField", username)
+					.click(userData[username].selector)
 					.clearValue("@passwordField")
-					.setValue("@passwordField", password)
-					.click("#react-select-3-option-0-0")
+					.setValue("@passwordField", userData[username].password)
+					.click(userData[userData[username].password].selector)
 					.click("#login-btn");
 			},
 		},
