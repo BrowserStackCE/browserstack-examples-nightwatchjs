@@ -2,7 +2,11 @@ describe("Offers Test", () => {
 	this.tags = ["offers"];
 
 	beforeEach((browser, done) => {
-		browser.url(browser.launchUrl).assert.title("StackDemo");
+		browser
+			.windowMaximize()
+			.url(browser.launchUrl)
+			.waitForElementVisible(".shelf-item")
+			.assert.title("StackDemo");
 		done();
 	});
 

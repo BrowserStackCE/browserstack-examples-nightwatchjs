@@ -2,7 +2,11 @@ describe("e2e Test", () => {
 	this.tags = ["e2e", "single"];
 
 	beforeEach((browser, done) => {
-		browser.windowMaximize().url(browser.launchUrl).assert.title("StackDemo");
+		browser
+			.windowMaximize()
+			.url(browser.launchUrl)
+			.waitForElementVisible(".shelf-item")
+			.assert.title("StackDemo");
 		done();
 	});
 
