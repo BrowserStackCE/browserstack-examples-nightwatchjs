@@ -1,29 +1,21 @@
 #!/usr/bin/env node
 
-let Nightwatch = require("nightwatch");
-let browserstack = require("browserstack-local");
-let bs_local;
+var Nightwatch = require("nightwatch");
+var browserstack = require("browserstack-local");
+var bs_local;
 
 try {
 	require.main.filename = "./node_modules/nightwatch/bin/nightwatch";
-	// process.mainModule.filename = "./node_modules/nightwatch/bin/nightwatch";
+	process.mainModule.filename = "./node_modules/nightwatch/bin/nightwatch";
 	// Code to start browserstack local before start of test
 	console.log("Connecting local");
-
 	Nightwatch.bs_local = bs_local = new browserstack.Local();
 	bs_local.start(
-		{
-			key: process.env.BROWSERSTACK_ACCESS_KEY,
-			forceLocal: true,
-			localIdentifier: "id",
-		},
+		{ key: process.env.BROWSERSTACK_ACCESS_KEY },
 		function (error) {
 			if (error) throw error;
 
-			console.log("Connected. Now testing...", {
-				key: process.env.BROWSERSTACK_ACCESS_KEY,
-				forceLocal: true,
-			});
+			console.log("Connected. Now testing...");
 			Nightwatch.cli(function (argv) {
 				Nightwatch.CliRunner(argv)
 					.setup(null, function () {

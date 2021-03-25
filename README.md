@@ -24,3 +24,4 @@
 10. `yarn test:browserstack:local_parallel_multiple` - Run locally hosted app suite tests on browserstack in parallel across different browsers
 11. `yarn generate-reports` - Run after any tests to generate reports
 12. `yarn open-reports` - To view the generated reports
+13. `yarn mobile` - run tests on mobile devices
