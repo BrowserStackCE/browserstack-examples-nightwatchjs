@@ -3,7 +3,6 @@ module.exports = {
 	output_folder: "results",
 
 	page_objects_path: "src/app/pages/",
-	live_output: "true",
 
 	test_settings: {
 		test_runner: {
