@@ -1,23 +1,16 @@
-const defaultConf = require("./generic");
-const bsConfig = require("../caps/docker.json");
-
-if (process.env.BROWSERSTACK_USERNAME !== undefined) {
-	process.env.BROWSERSTACK_USER = process.env.BROWSERSTACK_USERNAME;
-}
-if (process.env.BROWSERSTACK_ACCESS_KEY !== undefined) {
-	process.env.BROWSERSTACK_KEY = process.env.BROWSERSTACK_ACCESS_KEY;
-}
+const genericConfig = require("./generic");
+const dockerConfig = require("../caps/docker.json");
 
 const browsers = {};
 const launchUrl =
-	bsConfig.defaultUrl || defaultConf.test_settings.default.launch_url;
+	dockerConfig.defaultUrl || genericConfig.test_settings.default.launch_url;
 const browserstackRunConfig = { launch_url: launchUrl };
 
-for (let key in bsConfig) {
+for (let key in dockerConfig) {
 	switch (key) {
 		case "server":
-			const serverAndPort = bsConfig.server.split(":");
-			defaultConf["selenium"] = {
+			const serverAndPort = dockerConfig.server.split(":");
+			genericConfig["selenium"] = {
 				start_process: false,
 				host: serverAndPort[0],
 				port: serverAndPort.length === 2 ? serverAndPort[1] : 443,
@@ -30,16 +23,17 @@ for (let key in bsConfig) {
 			if (browserstackRunConfig["desiredCapabilities"] === undefined) {
 				browserstackRunConfig["desiredCapabilities"] = {};
 			}
-			browserstackRunConfig["desiredCapabilities"].build = bsConfig.build;
+			browserstackRunConfig["desiredCapabilities"].build = dockerConfig.build;
 			break;
 		case "project":
 			if (browserstackRunConfig["desiredCapabilities"] === undefined) {
 				browserstackRunConfig["desiredCapabilities"] = {};
 			}
-			browserstackRunConfig["desiredCapabilities"].project = bsConfig.project;
+			browserstackRunConfig["desiredCapabilities"].project =
+				dockerConfig.project;
 			break;
 		default:
-			let browserCaps = bsConfig[key];
+			let browserCaps = dockerConfig[key];
 			browsers[key] = {
 				...browserstackRunConfig,
 				desiredCapabilities: { ...browserstackRunConfig.desiredCapabilities },
@@ -51,14 +45,14 @@ for (let key in bsConfig) {
 			for (let cap in browserCaps) {
 				browsers[key]["desiredCapabilities"][cap] = browserCaps[cap];
 			}
-			browserCaps["selenium_host"] = defaultConf.selenium.host;
-			browserCaps["selenium_port"] = defaultConf.selenium.port;
+			browserCaps["selenium_host"] = genericConfig.selenium.host;
+			browserCaps["selenium_port"] = genericConfig.selenium.port;
 			break;
 	}
 }
 
 module.exports = {
-	...defaultConf,
+	...genericConfig,
 	webdriver: {
 		keep_alive: true,
 		timeout_options: {
@@ -74,7 +68,7 @@ module.exports = {
 	},
 
 	test_settings: {
-		...defaultConf.test_settings,
+		...genericConfig.test_settings,
 
 		browserstack: browserstackRunConfig,
 
