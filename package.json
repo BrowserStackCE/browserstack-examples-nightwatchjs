@@ -18,7 +18,7 @@
 		"test:browserstack:single": "nightwatch -c resources/conf/runners/browserstack.js --env chrome --tag single",
 		"test:docker:single": "nightwatch -c resources/conf/runners/docker.js --env chrome --tag single",
 		"test:on-prem:single": "nightwatch -c resources/conf/runners/on-prem.js --tag single",
-		"test:browserstack:parallel": "nightwatch -c resources/conf/runners/browserstack.js --env edge --parallel",
+		"test:browserstack:parallel": "nightwatch -c resources/conf/runners/browserstack.js --env chrome --parallel",
 		"test:docker:parallel": "nightwatch -c resources/conf/runners/docker.js --env chrome --parallel",
 		"test:on-prem:suite": "nightwatch -c resources/conf/runners/on-prem.js",
 		"test:browserstack:parallel_multiple": "nightwatch -c resources/conf/runners/browserstack.js --env chrome,edge,safari,android,iphone --parallel",
