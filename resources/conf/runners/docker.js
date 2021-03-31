@@ -1,5 +1,5 @@
 const defaultConf = require("./generic");
-const bsConfig = require("../caps/nightwatch.self_hosted.json");
+const bsConfig = require("../caps/docker.json");
 
 if (process.env.BROWSERSTACK_USERNAME !== undefined) {
 	process.env.BROWSERSTACK_USER = process.env.BROWSERSTACK_USERNAME;
