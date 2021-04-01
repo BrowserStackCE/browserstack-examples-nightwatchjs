@@ -14,7 +14,7 @@ describe("e2e Test", () => {
 
 		let homePage = browser.page.home();
 
-		homePage.navigate().addiPhonesToCartAndCheckout();
+		homePage.assert.not.elementPresent("#signin").addiPhonesToCartAndCheckout();
 
 		let checkoutPage = browser.page.checkout();
 

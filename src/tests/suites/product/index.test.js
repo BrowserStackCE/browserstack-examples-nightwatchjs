@@ -13,7 +13,6 @@ describe("Product Tests", () => {
 		browser
 			.click("input[value='Apple'] + span")
 			.click("input[value='Samsung'] + span");
-		// .pause(5000);
 
 		browser.expect.elements(".shelf-item").count.to.equal(16);
 	});

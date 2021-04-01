@@ -80,7 +80,7 @@ For all the parallel run configuration profiles, you can configure the maximum p
 
    test_workers: {
      ...
-    workers: 10, // change this attribute
+    workers: 5, // change this attribute
      ...
    },
   ...
@@ -396,7 +396,7 @@ In this section, we will run the test cases to test the internally hosted websit
 - View your test results on the [BrowserStack Automate dashboard](https://www.browserstack.com/automate)
 - Documentation for writing [Automate test scripts in Nightwatchjs](https://www.browserstack.com/docs/automate/selenium/getting-started/nodejs/nightwatch)
 - Customizing your tests capabilities on BrowserStack using our [test capability generator](https://www.browserstack.com/automate/capabilities)
-- [List of Browsers & mobile devices](https://www.browserstack.com/list-of-browsers-and-platforms?product=automate) for automation testing on BrowserStack #{ Replace link for non-Selenium frameworks. }
+- [List of Browsers & mobile devices](https://www.browserstack.com/list-of-browsers-and-platforms?product=automate) for automation testing on BrowserStack
 - [Using Automate REST API](https://www.browserstack.com/automate/rest-api) to access information about your tests via the command-line interface
 - Understand how many parallel sessions you need by using our [Parallel Test Calculator](https://www.browserstack.com/automate/parallel-calculator?ref=github)
 - For testing public web applications behind IP restriction, [Inbound IP Whitelisting](https://www.browserstack.com/local-testing/inbound-ip-whitelisting) can be enabled with the [BrowserStack Enterprise](https://www.browserstack.com/enterprise) offering
@@ -404,9 +404,9 @@ In this section, we will run the test cases to test the internally hosted websit
 ## Observations
 
 - Do not use "." in the naming convention for any browsers or devices as it might break nightwatchjs' engine to start sessions or run them correctly.
-- Have added `pauses` after execute scripts commands as otherwise nightwatchjs moves ahead even if the script is not executed completely
+- There are few occurrences of `pause` method being used in some of the scripts as a temporary measure to avoid flaky test execution. We plan to remove all occurrences of these hardcoded `pause` methods in the upcoming patch releases.
 
 ## Open Issues
 
 - When running all the tests in parallel, there is some flakiness observed in mobile devices where in some commands are skipped or not executed at all.
-- Cannot control maximum parallel threads when running across different environments in parallel in commands like `yarn test:browserstack:local_parallel_multiple` and `yarn test:browserstack:parallel_multiple`
+- Currently Nightwatch does not allow to control the maximum threads that should be spawned for tests running across different browsers in parallel. So when you run `yarn test:browserstack:local_parallel_multiple` and `yarn test:browserstack:parallel_multiple` commands, it will spawn 25 test sessions (5 spec files across 5 browsers).

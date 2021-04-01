@@ -21,13 +21,18 @@ module.exports.after = (browser, done) => {
 		passed = browser.currentTest.results.passed,
 		skipped = browser.currentTest.results.skipped;
 
-	browser
-		.execute(
-			`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"${
-				errors + failed - retries > 0 ? "failed" : "passed"
-			}","reason": "${errors} - errors ${failed} - failed - ${retries} - retried ${passed} - passed ${skipped} - skipped"}}`
-		)
-		.pause(1000)
-		.end();
+	if (browser.globals.bsEnv) {
+		browser
+			.execute(
+				`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"${
+					errors + failed - retries > 0 ? "failed" : "passed"
+				}","reason": "${errors} - errors ${failed} - failed - ${retries} - retried ${passed} - passed ${skipped} - skipped"}}`
+			)
+			.pause(1000)
+			.end();
+	} else {
+		browser.end();
+	}
+
 	done();
 };
