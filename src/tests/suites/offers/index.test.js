@@ -17,8 +17,8 @@ describe("Offers Test", () => {
 						altitude: null,
 						altitudeAccuracy: null,
 						heading: null,
-						latitude: 19.043192,
-						longitude: 72.86305240000002,
+						latitude: 19.043,
+						longitude: 72.863,
 						speed: null
 					}
 				}); 
@@ -32,8 +32,8 @@ describe("Offers Test", () => {
 						altitude: null,
 						altitudeAccuracy: null,
 						heading: null,
-						latitude: 19.043192,
-						longitude: 72.86305240000002,
+						latitude: 19.043,
+						longitude: 72.863,
 						speed: null
 					}
 				}); 

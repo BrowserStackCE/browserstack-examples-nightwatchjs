@@ -12,7 +12,7 @@
 		"test:browserstack:user": "yarn test:browserstack --tag user",
 		"test:browserstack:login": "yarn test:browserstack --tag login",
 		"test:browserstack:product": "yarn test:browserstack --tag product",
-		"test:docker": "node local.runner.js -c resources/conf/runners/docker.js --env chrome,edge,opera",
+		"test:docker": "nightwatch -c resources/conf/runners/docker.js --env chrome,firefox",
 		"test:on-prem": "nightwatch -c resources/conf/runners/on-prem.js",
 		"test:browserstack:mobile": "nightwatch -c resources/conf/runners/browserstack.js --env android,iphone --tag single",
 		"test:browserstack:single": "nightwatch -c resources/conf/runners/browserstack.js --env chrome --tag single",
@@ -27,10 +27,10 @@
 		"test:browserstack:local_parallel_multiple": "node ./resources/conf/runners/browserstack_local.js -c resources/conf/runners/browserstack.js --env chrome_local,edge_local,safari_local,android_local,iphone_local --parallel"
 	},
 	"devDependencies": {
-		"allure-commandline": "^2.13.8",
-		"browserstack-local": "^1.4.8",
-		"chromedriver": "^89.0.0",
-		"eslint": "^7.21.0",
-		"nightwatch": "^1.5.1"
+		"allure-commandline": "2.13.8",
+		"browserstack-local": "1.4.8",
+		"chromedriver": "89.0.0",
+		"eslint": "7.21.0",
+		"nightwatch": "1.5.1"
 	}
 }

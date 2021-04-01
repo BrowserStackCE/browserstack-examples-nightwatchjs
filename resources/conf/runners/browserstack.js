@@ -1,23 +1,34 @@
-const genericConfig = require("./generic");
+const baseConfig = require("./base_config");
 const bsConfig = require("../caps/browserstack.json");
 
-if (process.env.BROWSERSTACK_USERNAME !== undefined) {
+// Nightwatchjs internally uses BROWSERSTACK_USER and BROWSERSTACK_KEY environment variables to run on BrowserStack platform.
+// Hence setting these here as our format across repositories is set BROWSERSTACK_USERNAME and BROWSERSTACK_ACCESS_KEY
+if (
+	process.env.BROWSERSTACK_USERNAME !== undefined &&
+	process.env.BROWSERSTACK_USER === undefined
+) {
 	process.env.BROWSERSTACK_USER = process.env.BROWSERSTACK_USERNAME;
 }
-if (process.env.BROWSERSTACK_ACCESS_KEY !== undefined) {
+if (
+	process.env.BROWSERSTACK_ACCESS_KEY !== undefined &&
+	process.env.BROWSERSTACK_KEY === undefined
+) {
 	process.env.BROWSERSTACK_KEY = process.env.BROWSERSTACK_ACCESS_KEY;
 }
 
 const browsers = {};
 const launchUrl =
-	bsConfig.defaultUrl || genericConfig.test_settings.default.launch_url;
-const browserstackRunConfig = { launch_url: launchUrl };
+	bsConfig.defaultUrl || baseConfig.test_settings.default.launch_url;
+const browserstackRunConfig = {
+	launch_url: launchUrl,
+	globals: { bsEnv: true },
+};
 
 for (let key in bsConfig) {
 	switch (key) {
 		case "server":
 			const serverAndPort = bsConfig.server.split(":");
-			genericConfig["selenium"] = {
+			baseConfig["selenium"] = {
 				start_process: false,
 				host: serverAndPort[0],
 				port: serverAndPort.length === 2 ? serverAndPort[1] : 443,
@@ -59,14 +70,15 @@ for (let key in bsConfig) {
 			for (let cap in browserCaps) {
 				browsers[key]["desiredCapabilities"][cap] = browserCaps[cap];
 			}
-			browserCaps["selenium_host"] = genericConfig.selenium.host;
-			browserCaps["selenium_port"] = genericConfig.selenium.port;
+			browserCaps["selenium_host"] = baseConfig.selenium.host;
+			browserCaps["selenium_port"] = baseConfig.selenium.port;
+			browserCaps["globals"] = { bsEnv: true };
 			break;
 	}
 }
 
 module.exports = {
-	...genericConfig,
+	...baseConfig,
 	webdriver: {
 		keep_alive: true,
 		timeout_options: {
@@ -77,12 +89,12 @@ module.exports = {
 
 	test_workers: {
 		enabled: true,
-		workers: 10,
+		workers: 5,
 		node_options: "inherit",
 	},
 
 	test_settings: {
-		...genericConfig.test_settings,
+		...baseConfig.test_settings,
 
 		browserstack: browserstackRunConfig,
 

@@ -1,7 +1,7 @@
-const defaultConf = require("./generic");
+const baseConfig = require("./base_config");
 
 module.exports = {
-	...defaultConf,
+	...baseConfig,
 	webdriver: {
 		start_process: true,
 		server_path: require("chromedriver").path,
