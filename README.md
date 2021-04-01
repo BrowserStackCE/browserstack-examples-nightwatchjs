@@ -6,7 +6,7 @@
 
 Nightwatch.js is an integrated, easy to use End-to-End testing solution for web applications and websites, written in Node.js. It uses the W3C WebDriver API to drive browsers in order to perform commands and assertions on DOM elements.
 
-This BrowserStack Example repository demonstrates a Selenium test framework written in Node.js and Nightwatchjs 5 with parallel testing capabilities. The Selenium test test scripts are written for the open source [BrowserStack Demo web application](https://bstackdemo.com) ([Github](https://github.com/browserstack/browserstack-demo-app)). This BrowserStack Demo App is an e-commerce web application which showcases multiple real-world user scenarios. The app is bundled with offers data, orders data and products data that contains everything you need to start using the app and run tests out-of-the-box.
+This BrowserStack Example repository demonstrates a Selenium test framework written in Node.js and Nightwatchjs 1.5 with parallel testing capabilities. The Selenium test test scripts are written for the open source [BrowserStack Demo web application](https://bstackdemo.com) ([Github](https://github.com/browserstack/browserstack-demo-app)). This BrowserStack Demo App is an e-commerce web application which showcases multiple real-world user scenarios. The app is bundled with offers data, orders data and products data that contains everything you need to start using the app and run tests out-of-the-box.
 
 The Selenium test tests are run on different platforms like on-prem, docker and BrowserStack using various run configurations and test capabilities.
 
@@ -94,7 +94,7 @@ For all the parallel run configuration profiles, you can configure the maximum p
 
 # On Premise / Self Hosted
 
-This infrastructure points to running the tests on your own machine using a browser (e.g. Chrome) using the browser's driver executables (e.g. ChromeDriver for Chrome). #{ Selenium enables this functionality using WebDriver for many popular browsers.}
+This infrastructure points to running the tests on your own machine using a browser (e.g. Chrome) using the browser's driver executables (e.g. ChromeDriver for Chrome). Selenium enables this functionality using WebDriver for many popular browsers.
 
 ## Prerequisites
 
@@ -404,7 +404,9 @@ In this section, we will run the test cases to test the internally hosted websit
 ## Observations
 
 - Do not use "." in the naming convention for any browsers or devices as it might break nightwatchjs' engine to start sessions or run them correctly.
+- Have added `pauses` after execute scripts commands as otherwise nightwatchjs moves ahead even if the script is not executed completely
 
 ## Open Issues
 
 - When running all the tests in parallel, there is some flakiness observed in mobile devices where in some commands are skipped or not executed at all.
+- Cannot control maximum parallel threads when running across different environments in parallel in commands like `yarn test:browserstack:local_parallel_multiple` and `yarn test:browserstack:parallel_multiple`

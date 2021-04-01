@@ -13,17 +13,5 @@
 
 	"firefox": {
 		"browserName": "firefox"
-	},
-
-	"edge": {
-		"browserName": "MicrosoftEdge"
-	},
-
-	"safari": {
-		"browserName": "safari"
-	},
-
-	"opera": {
-		"browserName": "operablink"
 	}
 }

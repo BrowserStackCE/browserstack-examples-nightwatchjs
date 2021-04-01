@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
-var Nightwatch = require("nightwatch");
-var browserstack = require("browserstack-local");
-var bs_local;
+const Nightwatch = require("nightwatch");
+const browserstack = require("browserstack-local");
+const bs_local;
 
 try {
-	require.main.filename = "./node_modules/nightwatch/bin/nightwatch";
-	process.mainModule.filename = "./node_modules/nightwatch/bin/nightwatch";
+	const pathToNightwatchExecutable = "./node_modules/nightwatch/bin/nightwatch";
+	require.main.filename = pathToNightwatchExecutable;
+	process.mainModule.filename = pathToNightwatchExecutable;
 	// Code to start browserstack local before start of test
 	console.log("Connecting local");
 	Nightwatch.bs_local = bs_local = new browserstack.Local();
