@@ -1,42 +1,41 @@
-const genericConfig = require("./generic");
+const baseConfig = require("./base_config");
 const dockerConfig = require("../caps/docker.json");
 
 const browsers = {};
 const launchUrl =
-	dockerConfig.defaultUrl || genericConfig.test_settings.default.launch_url;
-const browserstackRunConfig = { launch_url: launchUrl };
+	dockerConfig.defaultUrl || baseConfig.test_settings.default.launch_url;
+const dockerRunConfig = { launch_url: launchUrl, globals: { dockerEnv: true } };
 
 for (let key in dockerConfig) {
 	switch (key) {
 		case "server":
 			const serverAndPort = dockerConfig.server.split(":");
-			genericConfig["selenium"] = {
+			baseConfig["selenium"] = {
 				start_process: false,
 				host: serverAndPort[0],
 				port: serverAndPort.length === 2 ? serverAndPort[1] : 443,
 			};
-			browserstackRunConfig["selenium_host"] = serverAndPort[0];
-			browserstackRunConfig["selenium_port"] =
+			dockerRunConfig["selenium_host"] = serverAndPort[0];
+			dockerRunConfig["selenium_port"] =
 				serverAndPort.length === 2 ? serverAndPort[1] : 443;
 			break;
 		case "build":
-			if (browserstackRunConfig["desiredCapabilities"] === undefined) {
-				browserstackRunConfig["desiredCapabilities"] = {};
+			if (dockerRunConfig["desiredCapabilities"] === undefined) {
+				dockerRunConfig["desiredCapabilities"] = {};
 			}
-			browserstackRunConfig["desiredCapabilities"].build = dockerConfig.build;
+			dockerRunConfig["desiredCapabilities"].build = dockerConfig.build;
 			break;
 		case "project":
-			if (browserstackRunConfig["desiredCapabilities"] === undefined) {
-				browserstackRunConfig["desiredCapabilities"] = {};
+			if (dockerRunConfig["desiredCapabilities"] === undefined) {
+				dockerRunConfig["desiredCapabilities"] = {};
 			}
-			browserstackRunConfig["desiredCapabilities"].project =
-				dockerConfig.project;
+			dockerRunConfig["desiredCapabilities"].project = dockerConfig.project;
 			break;
 		default:
 			let browserCaps = dockerConfig[key];
 			browsers[key] = {
-				...browserstackRunConfig,
-				desiredCapabilities: { ...browserstackRunConfig.desiredCapabilities },
+				...dockerRunConfig,
+				desiredCapabilities: { ...dockerRunConfig.desiredCapabilities },
 			};
 			if (browserCaps["defaultUrl"]) {
 				browsers[key].launch_url = browserCaps["defaultUrl"];
@@ -45,14 +44,15 @@ for (let key in dockerConfig) {
 			for (let cap in browserCaps) {
 				browsers[key]["desiredCapabilities"][cap] = browserCaps[cap];
 			}
-			browserCaps["selenium_host"] = genericConfig.selenium.host;
-			browserCaps["selenium_port"] = genericConfig.selenium.port;
+			browserCaps["selenium_host"] = baseConfig.selenium.host;
+			browserCaps["selenium_port"] = baseConfig.selenium.port;
+			browserCaps["globals"] = { dockerEnv: true };
 			break;
 	}
 }
 
 module.exports = {
-	...genericConfig,
+	...baseConfig,
 	webdriver: {
 		keep_alive: true,
 		timeout_options: {
@@ -68,9 +68,9 @@ module.exports = {
 	},
 
 	test_settings: {
-		...genericConfig.test_settings,
+		...baseConfig.test_settings,
 
-		browserstack: browserstackRunConfig,
+		browserstack: dockerRunConfig,
 
 		...browsers,
 	},
