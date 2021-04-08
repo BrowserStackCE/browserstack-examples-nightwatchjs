@@ -10,8 +10,7 @@ module.exports.beforeEach = (browser, done) => {
 };
 
 module.exports.afterEach = (browser, done) => {
-	browser.execute("sessionStorage.clear()").pause(500);
-	done();
+	browser.execute("sessionStorage.clear()", [], done);
 };
 
 module.exports.after = (browser, done) => {
@@ -29,10 +28,8 @@ module.exports.after = (browser, done) => {
 				}","reason": "${errors} - errors ${failed} - failed - ${retries} - retried ${passed} - passed ${skipped} - skipped"}}`
 			)
 			.pause(1000)
-			.end();
+			.end(done);
 	} else {
-		browser.end();
+		browser.end(done);
 	}
-
-	done();
 };
