@@ -7,17 +7,18 @@ services:
     volumes:
       - /dev/shm:/dev/shm
     environment:
+      - SCREEN_WIDTH=1440
+      - SCREEN_HEIGHT=900
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      - SCREEN_WIDTH=2880
-      - SCREEN_HEIGHT=1800
-      - HUB_HOST=selenium-hub
-      - HUB_PORT=4444
+      - SE_NODE_MAX_SESSIONS=5
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
       - JAVA_OPTS=-Dwebdriver.chrome.whitelistedIps=
     links:
       - selenium-hub:hub
-    scale: 2
+    ports:
+      - "5900:5900" # connect to VNC using 5900 port, password: secret
 
   firefox:
     image: selenium/node-firefox:4.0.0
@@ -26,17 +27,18 @@ services:
     volumes:
       - /dev/shm:/dev/shm
     environment:
+      - SCREEN_WIDTH=1440
+      - SCREEN_HEIGHT=900
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      - SCREEN_WIDTH=2880
-      - SCREEN_HEIGHT=1800
-      - HUB_HOST=selenium-hub
-      - HUB_PORT=4444
+      - SE_NODE_MAX_SESSIONS=5
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
       - JAVA_OPTS=-Dwebdriver.chrome.whitelistedIps=
     links:
       - selenium-hub:hub
-    scale: 2
+    ports:
+      - "5901:5900" # connect to VNC using 5901 port, password: secret
 
   selenium-hub:
     image: selenium/hub:4.0.0

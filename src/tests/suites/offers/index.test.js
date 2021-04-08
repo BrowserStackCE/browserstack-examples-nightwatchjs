@@ -9,38 +9,37 @@ describe("Offers Test", () => {
 	afterEach(commonHooks.afterEach);
 
 	it("Number of Items in offers != 0", (browser) => {
-		browser.execute(
-			`navigator.geolocation.getCurrentPosition = function(cb){ 
-				cb({ 
-					coords: {
-						accuracy: 20,
-						altitude: null,
-						altitudeAccuracy: null,
-						heading: null,
-						latitude: 19.043,
-						longitude: 72.863,
-						speed: null
-					}
-				}); 
-			}`
-		);
-		browser.execute(
-			`window.navigator.geolocation.getCurrentPosition = function(cb){ 
-				cb({ 
-					coords: {
-						accuracy: 20,
-						altitude: null,
-						altitudeAccuracy: null,
-						heading: null,
-						latitude: 19.043,
-						longitude: 72.863,
-						speed: null
-					}
-				}); 
-			}`
-		);
-
 		browser
+			.execute(
+				`navigator.geolocation.getCurrentPosition = function(cb){ 
+				cb({ 
+					coords: {
+						accuracy: 20,
+						altitude: null,
+						altitudeAccuracy: null,
+						heading: null,
+						latitude: 19.043,
+						longitude: 72.863,
+						speed: null
+					}
+				}); 
+			}`
+			)
+			.execute(
+				`window.navigator.geolocation.getCurrentPosition = function(cb){ 
+				cb({ 
+					coords: {
+						accuracy: 20,
+						altitude: null,
+						altitudeAccuracy: null,
+						heading: null,
+						latitude: 19.043,
+						longitude: 72.863,
+						speed: null
+					}
+				}); 
+			}`
+			)
 			.click("#signin")
 			.clearValue("#username input")
 			.setValue("#username input", "fav_user")
