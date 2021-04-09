@@ -2,7 +2,7 @@
 
 const Nightwatch = require("nightwatch");
 const browserstack = require("browserstack-local");
-const bs_local;
+let bs_local;
 
 try {
 	const pathToNightwatchExecutable = "./node_modules/nightwatch/bin/nightwatch";

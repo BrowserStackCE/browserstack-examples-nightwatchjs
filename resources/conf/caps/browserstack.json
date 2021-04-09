@@ -76,22 +76,17 @@
 
 	"firefox_local": {
 		"browserName": "firefox",
+		"browser_version": "83",
 		"resolution": "1920x1080",
 		"browserstack.video": true,
-		"browserstack.geoLocation": "IN",
 		"browserstack.local": true,
-		"defaultUrl": "http://localhost:3000"
+		"defaultUrl": "http://bs-local.com:3000"
 	},
 
 	"edge_local": {
 		"browserName": "edge",
 		"resolution": "1920x1080",
 		"browserstack.video": true,
-		"goog:chromeOptions": {
-			"prefs": {
-				"profile.managed_default_content_settings.geolocation": 1
-			}
-		},
 		"browserstack.local": true,
 		"defaultUrl": "http://localhost:3000"
 	},
