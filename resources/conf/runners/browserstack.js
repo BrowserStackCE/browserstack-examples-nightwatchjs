@@ -41,7 +41,10 @@ for (let key in bsConfig) {
 			if (browserstackRunConfig["desiredCapabilities"] === undefined) {
 				browserstackRunConfig["desiredCapabilities"] = {};
 			}
-			browserstackRunConfig["desiredCapabilities"].build = bsConfig.build;
+			browserstackRunConfig["desiredCapabilities"].build =
+				bsConfig.build +
+				"-" +
+				Math.trunc(new Date().getTime() / 10000).toString();
 			break;
 		case "project":
 			if (browserstackRunConfig["desiredCapabilities"] === undefined) {
