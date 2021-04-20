@@ -37,7 +37,7 @@ This repository contains the following Selenium tests:
 | Login   | Login with given username          | This test verifies the login workflow with different types of valid login users.                                                                                                                                                                                                  | login   |
 | Login   | Login as Locked User               | This test verifies the login workflow error for a locked user.                                                                                                                                                                                                                    | login   |
 | Offers  | Offers for Mumbai location         | This test mocks the GPS location for Mumbai and verifies that the product offers applicable for the Mumbai location are shown.                                                                                                                                                    | offers  |
-| Product | Apply Apple Vendor Filter          | This test verifies that the Apple products are only shown if the Apple vendor filter option is applied.                                                                                                                                                                           | product |
+| Product | Apply Apple & Samsung Vendor Filter          | This test verifies that only Apple and Samsung products shown if the Apple and Samsung vendor filter option is applied.                                                                                                                                                                           | product |
 | Product | Apply Lowest to Highest Order By   | This test verifies that the product prices are in ascending order when the product sort "Lowest to Highest" is applied.                                                                                                                                                           | product |
 | User    | Login as User with no image loaded | This test verifies that the product images load for user: "image_not_loading_user" on the e-commerce application. Since the images do not load, the test case assertion fails.                                                                                                    | user    |
 | User    | Login as User with existing Orders | This test verifies that existing orders are shown for user: "existing_orders_user"                                                                                                                                                                                                | user    |
@@ -118,6 +118,7 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   ```sh
   yarn test:on-prem --tag <tag-name>
+  # for eg: yarn test:on-prem --tag user
   ```
 
   where, the argument 'tag-name' can be any tag configured in this repository.
@@ -176,6 +177,7 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
   ```sh
   yarn test:docker --tag <tag-name>
+  # yarn test:docker --tag user
   ```
 
   where, the argument 'tag-name' can be any tag configured in this repository.
@@ -270,6 +272,7 @@ In this section, we will run a single test on Chrome browser on Browserstack. To
 
   ```sh
   yarn test:browserstack --tag <tag-name>
+  # for eg yarn test:browsestack --tag user
   ```
 
   where, the argument 'tag-name' can be any tag configured in this repository.
