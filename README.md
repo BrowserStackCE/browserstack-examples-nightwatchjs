@@ -46,7 +46,7 @@ This repository contains the following Selenium tests:
 
 ## Test infrastructure environments
 
-- [On-premise/self-hosted](#on-premise-self-hosted)
+- [On-premise](#on-premise)
 - [Docker](#docker)
 - [BrowserStack](#browserstack)
 
@@ -92,7 +92,7 @@ For all the parallel run configuration profiles, you can configure the maximum p
 
 ---
 
-# On Premise / Self Hosted
+# On Premise
 
 This infrastructure points to running the tests on your own machine using a browser (e.g. Chrome) using the browser's driver executables (e.g. ChromeDriver for Chrome). Selenium enables this functionality using WebDriver for many popular browsers.
 
