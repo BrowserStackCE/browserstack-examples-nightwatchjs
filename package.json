@@ -1,0 +1,36 @@
+{
+	"name": "browserstack-nightwatchjs",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"allure:generate": "allure generate -c results/**/",
+		"allure:open": "allure open",
+		"test:browserstack": "nightwatch -c resources/conf/runners/browserstack.js --env chrome,edge,safari,android,iphone --parallel",
+		"test:browserstack:e2e": "yarn test:browserstack --tag e2e",
+		"test:browserstack:offers": "yarn test:browserstack --tag offers",
+		"test:browserstack:user": "yarn test:browserstack --tag user",
+		"test:browserstack:login": "yarn test:browserstack --tag login",
+		"test:browserstack:product": "yarn test:browserstack --tag product",
+		"test:docker": "nightwatch -c resources/conf/runners/docker.js --env chrome,firefox",
+		"test:on-prem": "nightwatch -c resources/conf/runners/on-prem.js",
+		"test:browserstack:mobile": "nightwatch -c resources/conf/runners/browserstack.js --env android,iphone --tag single",
+		"test:browserstack:single": "nightwatch -c resources/conf/runners/browserstack.js --env chrome --tag single",
+		"test:docker:single": "nightwatch -c resources/conf/runners/docker.js --env chrome --tag single",
+		"test:on-prem:single": "nightwatch -c resources/conf/runners/on-prem.js --tag single",
+		"test:browserstack:parallel": "nightwatch -c resources/conf/runners/browserstack.js --env chrome --parallel",
+		"test:docker:parallel": "nightwatch -c resources/conf/runners/docker.js --env chrome --parallel",
+		"test:on-prem:suite": "nightwatch -c resources/conf/runners/on-prem.js",
+		"test:browserstack:parallel_multiple": "nightwatch -c resources/conf/runners/browserstack.js --env chrome,edge,safari,android,iphone --parallel",
+		"test:browserstack:local": "node ./resources/conf/runners/browserstack_local.js -c resources/conf/runners/browserstack.js --env chrome_local --tag single",
+		"test:browserstack:local_parallel": "node ./resources/conf/runners/browserstack_local.js -c resources/conf/runners/browserstack.js --env chrome_local --parallel",
+		"test:browserstack:local_parallel_multiple": "node ./resources/conf/runners/browserstack_local.js -c resources/conf/runners/browserstack.js --env chrome_local,edge_local,safari_local,android_local,iphone_local --parallel"
+	},
+	"devDependencies": {
+		"allure-commandline": "2.13.8",
+		"browserstack-local": "1.4.8",
+		"chromedriver": "89.0.0",
+		"eslint": "7.21.0",
+		"nightwatch": "1.5.1"
+	}
+}

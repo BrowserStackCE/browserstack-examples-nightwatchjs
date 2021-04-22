@@ -1,0 +1,25 @@
+{
+	"locked_user": {
+		"selector": "#react-select-2-option-0-4",
+		"password": "testingisfun99"
+	},
+	"demouser": {
+		"selector": "#react-select-2-option-0-0",
+		"password": "testingisfun99"
+	},
+	"image_not_loading_user": {
+		"selector": "#react-select-2-option-0-1",
+		"password": "testingisfun99"
+	},
+	"existing_orders_user": {
+		"selector": "#react-select-2-option-0-2",
+		"password": "testingisfun99"
+	},
+	"fav_user": {
+		"selector": "#react-select-2-option-0-3",
+		"password": "testingisfun99"
+	},
+	"testingisfun99": {
+		"selector": "#react-select-3-option-0-0"
+	}
+}

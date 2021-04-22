@@ -1,0 +1,17 @@
+{
+	"project": "browserstack-examples",
+	"build": "browserstack-examples-nightwatchjs",
+	"server": "localhost:4444",
+	"chrome": {
+		"browserName": "chrome",
+		"goog:chromeOptions": {
+			"prefs": {
+				"profile.managed_default_content_settings.geolocation": 1
+			}
+		}
+	},
+
+	"firefox": {
+		"browserName": "firefox"
+	}
+}
