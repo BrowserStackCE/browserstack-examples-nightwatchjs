@@ -3,7 +3,7 @@ module.exports = {
 		return this.api.launchUrl + "/orders";
 	},
 	elements: {
-		orders: ".a-fixed-right-grid-inner.a-grid-vertical-align.a-grid-top",
+		orders: ".shipment .a-fixed-right-grid > div",
 	},
 	commands: [
 		{

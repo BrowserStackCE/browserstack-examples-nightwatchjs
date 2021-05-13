@@ -31,16 +31,16 @@ The Selenium test tests are run on different platforms like on-prem, docker and 
 
 This repository contains the following Selenium tests:
 
-| Module  | Test name                          | Description                                                                                                                                                                                                                                                                       | Tag     |
-| ------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| E2E     | End to End Scenario                | This test scenario verifies successful product purchase lifecycle end-to-end. It demonstrates the [Page Object Model design pattern](https://www.browserstack.com/guide/page-object-model-in-selenium) and is also the default test executed in all the single test run profiles. | e2e     |
-| Login   | Login with given username          | This test verifies the login workflow with different types of valid login users.                                                                                                                                                                                                  | login   |
-| Login   | Login as Locked User               | This test verifies the login workflow error for a locked user.                                                                                                                                                                                                                    | login   |
-| Offers  | Offers for Mumbai location         | This test mocks the GPS location for Mumbai and verifies that the product offers applicable for the Mumbai location are shown.                                                                                                                                                    | offers  |
-| Product | Apply Apple & Samsung Vendor Filter          | This test verifies that only Apple and Samsung products shown if the Apple and Samsung vendor filter option is applied.                                                                                                                                                                           | product |
-| Product | Apply Lowest to Highest Order By   | This test verifies that the product prices are in ascending order when the product sort "Lowest to Highest" is applied.                                                                                                                                                           | product |
-| User    | Login as User with no image loaded | This test verifies that the product images load for user: "image_not_loading_user" on the e-commerce application. Since the images do not load, the test case assertion fails.                                                                                                    | user    |
-| User    | Login as User with existing Orders | This test verifies that existing orders are shown for user: "existing_orders_user"                                                                                                                                                                                                | user    |
+| Module  | Test name                           | Description                                                                                                                                                                                                                                                                       | Tag     |
+| ------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| E2E     | End to End Scenario                 | This test scenario verifies successful product purchase lifecycle end-to-end. It demonstrates the [Page Object Model design pattern](https://www.browserstack.com/guide/page-object-model-in-selenium) and is also the default test executed in all the single test run profiles. | e2e     |
+| Login   | Login with given username           | This test verifies the login workflow with different types of valid login users.                                                                                                                                                                                                  | login   |
+| Login   | Login as Locked User                | This test verifies the login workflow error for a locked user.                                                                                                                                                                                                                    | login   |
+| Offers  | Offers for Mumbai location          | This test mocks the GPS location for Mumbai and verifies that the product offers applicable for the Mumbai location are shown.                                                                                                                                                    | offers  |
+| Product | Apply Apple & Samsung Vendor Filter | This test verifies that only Apple and Samsung products shown if the Apple and Samsung vendor filter option is applied.                                                                                                                                                           | product |
+| Product | Apply Lowest to Highest Order By    | This test verifies that the product prices are in ascending order when the product sort "Lowest to Highest" is applied.                                                                                                                                                           | product |
+| User    | Login as User with no image loaded  | This test verifies that the product images load for user: "image_not_loading_user" on the e-commerce application. Since the images do not load, the test case assertion fails.                                                                                                    | user    |
+| User    | Login as User with existing Orders  | This test verifies that existing orders are shown for user: "existing_orders_user"                                                                                                                                                                                                | user    |
 
 ---
 
@@ -111,14 +111,14 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
   To run the default test scenario (e.g. End to End Scenario) on your own machine, use the following command:
 
   ```sh
-  yarn test:on-prem:single
+  yarn on-prem-single
   ```
 
   To run a specific test file, use the following command with the additional 'tag-name' argument:
 
   ```sh
-  yarn test:on-prem --tag <tag-name>
-  # for eg: yarn test:on-prem --tag user
+  yarn on-prem --tag <tag-name>
+  # for eg: yarn on-prem --tag user
   ```
 
   where, the argument 'tag-name' can be any tag configured in this repository.
@@ -136,7 +136,7 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
   To run the entire test suite on your own machine, use the following command:
 
   ```sh
-  yarn test:on-prem:suite
+  yarn on-prem-suite
   ```
 
 - Output
@@ -164,20 +164,20 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
   - Start the Docker by running the following command:
 
   ```sh
-  docker-compose up -d
+  docker compose --project-directory docker up
   ```
 
   - To run the default test scenario (e.g. End to End Scenario) on your own machine, use the following command:
 
   ```sh
-  yarn test:docker:single
+  yarn docker-single
   ```
 
   To run a specific test file, use the following command with the additional 'tag-name' argument:
 
   ```sh
-  yarn test:docker --tag <tag-name>
-  # yarn test:docker --tag user
+  yarn docker --tag <tag-name>
+  # yarn docker --tag user
   ```
 
   where, the argument 'tag-name' can be any tag configured in this repository.
@@ -187,7 +187,7 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
   - After tests are complete, you can stop the Docker by running the following command:
 
   ```sh
-  docker-compose down
+  docker compose --project-directory docker down
   ```
 
 - Output
@@ -201,19 +201,19 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
   - Start the docker image first by running the following command:
 
   ```sh
-  docker-compose up -d
+  docker compose --project-directory docker up -d
   ```
 
   - To run the entire test suite in parallel on the docker image, use the following command:
 
   ```sh
-  yarn test:docker:parallel
+  yarn docker-parallel
   ```
 
   - After the tests are complete stop the Selenium grid by running the following command:
 
   ```sh
-  docker-compose down
+  docker compose --project-directory docker down
   ```
 
 - Output
@@ -265,14 +265,14 @@ In this section, we will run a single test on Chrome browser on Browserstack. To
   - To run the default test scenario (e.g. End to End Scenario) on your own machine, use the following command:
 
   ```sh
-  yarn test:browserstack:single
+  yarn bstack-single
   ```
 
   To run a specific test file, use the following command with the additional 'tag-name' argument:
 
   ```sh
-  yarn test:browserstack --tag <tag-name>
-  # for eg yarn test:browsestack --tag user
+  yarn bstack --tag <tag-name>
+  # for eg yarn bstack --tag user
   ```
 
   where, the argument 'tag-name' can be any tag configured in this repository.
@@ -292,7 +292,7 @@ In this section, we will run the tests in parallel on a single browser on Browse
   To run the entire test suite in parallel on a single BrowserStack browser, use the following command:
 
   ```sh
-  yarn test:browserstack:parallel
+  yarn bstack-parallel
   ```
 
 - Output
@@ -310,7 +310,7 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
   To run the entire test suite in parallel on multiple BrowserStack browsers, use the following command:
 
   ```sh
-  yarn test:browserstack:parallel_multiple
+  yarn bstack-parallel-multiple
   ```
 
 ### [Web application hosted on internal environment] Running your tests on BrowserStack using BrowserStackLocal
@@ -336,13 +336,13 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
   - To run the default test scenario (e.g. End to End Scenario) on a single BrowserStack browser using BrowserStackLocal, use the following command:
 
   ```sh
-  yarn test:browserstack:local
+  yarn bstack-local
   ```
 
   To run a specific test file, use the following command with the additional 'tag-name' argument:
 
   ```sh
-  yarn node ./resources/conf/runners/browserstack_local.js -c resources/conf/runners/browserstack.js --tag <tag-name>
+  node ./resources/conf/runners/browserstack_local.js -c resources/conf/runners/browserstack.js --tag <tag-name>
   ```
 
   where, the argument 'tag-name' can be any tag configured in this repository.
@@ -362,7 +362,7 @@ In this section, we will run the test cases to test the internally hosted websit
   To run the entire test suite in parallel on a single BrowserStack browser using BrowserStackLocal, use the following command:
 
   ```sh
-  yarn test:browserstack:local_parallel
+  yarn bstack-local-parallel
   ```
 
 - Output
@@ -380,7 +380,7 @@ In this section, we will run the test cases to test the internally hosted websit
   To run the entire test suite in parallel on a single BrowserStack browser using BrowserStackLocal, use the following command:
 
   ```sh
-  yarn test:browserstack:local_parallel_multiple
+  yarn bstack-local-parallel-multiple
   ```
 
 - Output
@@ -412,4 +412,4 @@ In this section, we will run the test cases to test the internally hosted websit
 ## Open Issues
 
 - When running all the tests in parallel, there is some flakiness observed in mobile devices where in some commands are skipped or not executed at all.
-- Currently Nightwatch does not allow to control the maximum threads that should be spawned for tests running across different browsers in parallel. So when you run `yarn test:browserstack:local_parallel_multiple` and `yarn test:browserstack:parallel_multiple` commands, it will spawn 25 test sessions (5 spec files across 5 browsers).
+- Currently Nightwatch does not allow to control the maximum threads that should be spawned for tests running across different browsers in parallel. So when you run `yarn bstack-local-parallel-multiple` and `yarn bstack-parallel-multiple` commands, it will spawn 25 test sessions (5 spec files across 5 browsers).

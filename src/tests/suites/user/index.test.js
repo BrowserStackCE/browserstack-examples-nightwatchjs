@@ -14,11 +14,12 @@ describe("User Tests", () => {
 			.assert.elementPresent("#signin")
 			.click("#signin")
 			.clearValue("#username input")
-			.setValue("#username input", "existing_orders_user")
-			.click(userData.existing_orders_user.selector)
+			.setValue("#username input", "existing_orders_user" + browser.Keys.ENTER)
 			.clearValue("#password input")
-			.setValue("#password input", userData.existing_orders_user.password)
-			.click(userData[userData.existing_orders_user.password].selector)
+			.setValue(
+				"#password input",
+				userData.existing_orders_user.password + browser.Keys.ENTER
+			)
 			.click("#login-btn")
 			.pause(1000)
 			.assert.containsText(".username", "existing_orders_user")
@@ -33,11 +34,12 @@ describe("User Tests", () => {
 			.assert.elementPresent("#signin")
 			.click("#signin")
 			.clearValue("#username input")
-			.setValue("#username input", "existing_orders_user")
-			.click(userData.existing_orders_user.selector)
+			.setValue("#username input", "existing_orders_user" + browser.Keys.ENTER)
 			.clearValue("#password input")
-			.setValue("#password input", userData.existing_orders_user.password)
-			.click(userData[userData.existing_orders_user.password].selector)
+			.setValue(
+				"#password input",
+				userData.existing_orders_user.password + browser.Keys.ENTER
+			)
 			.click("#login-btn")
 			.pause(1000)
 			.assert.containsText(".username", "existing_orders_user")
@@ -53,11 +55,15 @@ describe("User Tests", () => {
 			.assert.elementPresent("#signin")
 			.click("#signin")
 			.clearValue("#username input")
-			.setValue("#username input", "image_not_loading_user")
-			.click(userData.image_not_loading_user.selector)
+			.setValue(
+				"#username input",
+				"image_not_loading_user" + browser.Keys.ENTER
+			)
 			.clearValue("#password input")
-			.setValue("#password input", userData.image_not_loading_user.password)
-			.click(userData[userData.image_not_loading_user.password].selector)
+			.setValue(
+				"#password input",
+				userData.image_not_loading_user.password + browser.Keys.ENTER
+			)
 			.click("#login-btn")
 			.pause(1000)
 			.expect.elements("img[src='']")
