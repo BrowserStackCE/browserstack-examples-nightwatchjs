@@ -42,11 +42,12 @@ describe("Offers Test", () => {
 			)
 			.click("#signin")
 			.clearValue("#username input")
-			.setValue("#username input", "fav_user")
-			.click(userData.fav_user.selector)
+			.setValue("#username input", "fav_user" + browser.Keys.ENTER)
 			.clearValue("#password input")
-			.setValue("#password input", userData.fav_user.password)
-			.click(userData[userData.fav_user.password].selector)
+			.setValue(
+				"#password input",
+				userData.fav_user.password + browser.Keys.ENTER
+			)
 			.click("#login-btn")
 			.pause(1000)
 			.click("#offers")

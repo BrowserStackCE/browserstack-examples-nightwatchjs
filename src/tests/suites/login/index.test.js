@@ -12,11 +12,9 @@ describe("Login Tests", () => {
 		browser
 			.click("#signin")
 			.clearValue("#username input")
-			.setValue("#username input", "locked_user")
-			.click(userData.locked_user.selector)
+			.setValue("#username input", "locked_user" + browser.Keys.ENTER)
 			.clearValue("#password input")
-			.setValue("#password input", "testingisfun99")
-			.click(userData[userData.locked_user.password].selector)
+			.setValue("#password input", "testingisfun99" + browser.Keys.ENTER)
 			.click("#login-btn")
 			.assert.containsText(".api-error", "Your account has been locked.");
 	});
