@@ -23,7 +23,7 @@
 	"devDependencies": {
 		"allure-commandline": "2.13.8",
 		"browserstack-local": "1.4.8",
-		"chromedriver": "89.0.0",
+		"chromedriver": "^90.0.0",
 		"eslint": "7.21.0",
 		"nightwatch": "1.5.1"
 	}
