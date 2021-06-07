@@ -9,6 +9,7 @@
 		"bstack": "nightwatch -c resources/conf/runners/browserstack.js --env chrome,edge,safari,android,iphone --parallel",
 		"docker": "nightwatch -c resources/conf/runners/docker.js --env chrome,firefox",
 		"on-prem": "nightwatch -c resources/conf/runners/on-prem.js",
+		"on-prem-parallel": "nightwatch -c resources/conf/runners/on-prem.js --parallel",
 		"bstack-single": "nightwatch -c resources/conf/runners/browserstack.js --env chrome --tag single",
 		"docker-single": "nightwatch -c resources/conf/runners/docker.js --env chrome --tag single",
 		"on-prem-single": "nightwatch -c resources/conf/runners/on-prem.js --tag single",
