@@ -8,6 +8,12 @@ module.exports = {
 		port: 9515,
 	},
 
+	test_workers: {
+		enabled: true,
+		workers: 5,
+		node_options: "inherit",
+	},
+
 	test_settings: {
 		default: {
 			launch_url: "https://bstackdemo.com",

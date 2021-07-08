@@ -3,20 +3,38 @@
 const Nightwatch = require("nightwatch");
 const browserstack = require("browserstack-local");
 const Capabilities = require("../caps/browserstack.json");
+require("dotenv").config();
 
 let bs_local;
 
 try {
 	const accessKey =
 		process.env.BROWSERSTACK_ACCESS_KEY || Capabilities.access_key;
-	const pathToNightwatchExecutable = "./node_modules/nightwatch/bin/nightwatch";
+	const pathToNightwatchExecutable =
+		"./node_modules/nightwatch/bin/nightwatch";
 	require.main.filename = pathToNightwatchExecutable;
 	process.mainModule.filename = pathToNightwatchExecutable;
 	// Code to start browserstack local before start of test
 	console.log("Connecting local");
 	Nightwatch.bs_local = bs_local = new browserstack.Local();
+	let localIdentifier;
+	if (Capabilities.local_args["localIdentifier"]) {
+		localIdentifier = Capabilities.local_args["localIdentifier"];
+	} else if (Capabilities.local_args["local-identifier"]) {
+		localIdentifier = Capabilities.local_args["local-identifier"];
+	}
+	localIdentifier =
+		process.env.BROWSERSTACK_LOCAL_IDENTIFIER ||
+		localIdentifier ||
+		new Date().getTime();
+	process.env.BROWSERSTACK_LOCAL_IDENTIFIER = localIdentifier;
+	console.log(process.env.BROWSERSTACK_LOCAL_IDENTIFIER);
 	bs_local.start(
-		{ key: accessKey, ...Capabilities.local_args },
+		{
+			key: accessKey,
+			...Capabilities.local_args,
+			localIdentifier: localIdentifier,
+		},
 		function (error) {
 			if (error) throw error;
 
