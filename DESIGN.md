@@ -128,3 +128,53 @@ Starting from the top, this is what the following directories/files contain:
             This folder contains any utilites that would be required by the test suites. Examples: hooks, logging, stubs, etc.
 
 ## How to extend your test framework
+
+To extend your existing framework using the principles used here, you need to make sure that you are implementing/overiding the following properties:
+
+-   `Runners`:
+
+    Runners are an important part of how the tests are being executed for Nightwatch.js. Internally Nightwatch.js will use the runner code to create a connection to the browser driver. Modify the fields in the `base_config.js` to meet your test scripts.
+
+-   `Capabilities`:
+
+    All the runner files pick up their respective capabilites from resources/conf/caps folder. All the capability files are JSON files and we pick certains keys from this file to determine the infrastructure. The following keys should be present in these files:
+
+    -   `server`: This key defines the Selenium server URL
+    -   `defaultUrl`: The URL to application under test
+    -   `project, build` _(optional)_: Specify the build version of the project under testing
+    -   `username, access_key` _(optional)_: The username and access key required as authentication by the Selenium server
+    -   `local_args` _(optional)_: These are the arguments you need to paas BrowserStack Local. Refer [Configure BrowserStackLocal](#configure-BrowserStackLocal)
+    -   _`<device_name>`_: This defines the capability for each browser that you want to test on
+
+-   `Test Commands`:
+
+    The test commands for various infrastructures are placed in `package.json`. Please use appropriate commands from it and modify the paths to runner files
+
+## Add or remove new devices
+
+To add new devices, head over to [capabilites generator](https://www.browserstack.com/automate/capabilities), use NodeJS as language and copy the desired capabilities into `browserstack.json` file inside capabilities folder. Sample to add new devices:
+
+```json
+{
+    ...
+    "chrome-beta": {
+        "os" : "OS X",
+        "os_version" : "Big Sur",
+        "browserName" : "Chrome",
+        "browser_version" : "latest-beta"
+    },
+    "chrome90": {
+        "os" : "OS X",
+        "os_version" : "Big Sur",
+        "browserName" : "Chrome",
+        "browser_version" : "90",
+    }
+    ...
+}
+```
+
+To run tests on these environment, specify the key value in --env flag, for eg. `--env chrome-beta,chrome90`
+
+## Configure BrowserStackLocal
+
+If your tests are connecting to internal/private environments and you want to use BrowserStack Local to connect to them, then you can use the `local_args` in the capabilites file to configure the BrowserStack Local. Possible arguments can be found at [Local testing with Automate](https://www.browserstack.com/local-testing/automate) and [Flags for binary](https://www.browserstack.com/local-testing/binary-params)
