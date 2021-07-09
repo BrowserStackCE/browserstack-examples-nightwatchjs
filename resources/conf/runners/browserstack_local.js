@@ -28,7 +28,6 @@ try {
 		localIdentifier ||
 		new Date().getTime();
 	process.env.BROWSERSTACK_LOCAL_IDENTIFIER = localIdentifier;
-	console.log(process.env.BROWSERSTACK_LOCAL_IDENTIFIER);
 	bs_local.start(
 		{
 			key: accessKey,

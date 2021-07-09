@@ -95,8 +95,6 @@ for (let key in bsConfig) {
 	}
 }
 
-console.log(browsers);
-
 module.exports = {
 	...baseConfig,
 	webdriver: {
