@@ -29,7 +29,8 @@ for (let key in dockerConfig) {
 			if (dockerRunConfig["desiredCapabilities"] === undefined) {
 				dockerRunConfig["desiredCapabilities"] = {};
 			}
-			dockerRunConfig["desiredCapabilities"].project = dockerConfig.project;
+			dockerRunConfig["desiredCapabilities"].project =
+				dockerConfig.project;
 			break;
 		default:
 			let browserCaps = dockerConfig[key];
@@ -70,7 +71,7 @@ module.exports = {
 	test_settings: {
 		...baseConfig.test_settings,
 
-		browserstack: dockerRunConfig,
+		docker: dockerRunConfig,
 
 		...browsers,
 	},
