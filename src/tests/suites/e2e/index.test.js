@@ -28,7 +28,7 @@ describe("e2e Test", () => {
 
 		let orderConfirmationPage = browser.page.order_confirmation();
 		if (browser.globals.bsEnv) {
-			orderConfirmationPage.downloadPdf();
+			orderConfirmationPage.downloadPdfOnRemoteDevice();
 			orderConfirmationPage.downloadedFileExists(browser,"confirmation.pdf");
 		}
 		orderConfirmationPage.continueShopping();
