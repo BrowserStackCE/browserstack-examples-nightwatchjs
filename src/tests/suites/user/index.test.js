@@ -67,7 +67,7 @@ describe("User Tests", () => {
 			.click("#login-btn")
 			.pause(1000)
 			.expect.elements("img[src='']")
-			.count.to.not.equal(25);
+			.count.to.equal(25);
 	});
 
 	after(commonHooks.after);
