@@ -12,13 +12,13 @@ describe("Accessibility Tests", () => {
 			.click('#signin')	
 			.verify
 			.visible('.login_wrapper');
-
+		
 		browser
-            .axeInject()
-            .axeRun('html', {
-                rules: {'color-contrast': { enabled: true }}
-            })
-            .end();
+			.axeInject()
+        	.axeRun('html', {
+				rules: {'color-contrast': { enabled: true }}
+			})
+    		.end();
 	});
 	after(commonHooks.after);
 });
