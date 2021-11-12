@@ -18,7 +18,7 @@ describe("Accessibility Tests", () => {
 			.axeRun('html', {
 				rules: {'color-contrast': { enabled: true }}
 			})
-    		.end();
+			.end();
 	});
 	after(commonHooks.after);
 });
