@@ -9,9 +9,14 @@ describe("Accessibility Tests", () => {
 
 	it("Accessibility Test", (browser) => {
 		browser
+			.click('#signin')	
+			.verify
+			.visible('.login_wrapper');
+
+		browser
             .axeInject()
             .axeRun('html', {
-                rules: {}
+                rules: {'color-contrast': { enabled: true }}
             })
             .end();
 	});
