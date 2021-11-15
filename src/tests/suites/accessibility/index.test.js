@@ -10,7 +10,7 @@ describe("Accessibility Tests", () => {
 	it("Accessibility Test", (browser) => {
 		browser
 			.click('#signin')	
-			.verify
+			.assert
 			.visible('.login_wrapper');
 		
 		browser
