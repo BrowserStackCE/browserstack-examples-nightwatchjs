@@ -9,11 +9,16 @@ describe("Accessibility Tests", () => {
 
 	it("Accessibility Test", (browser) => {
 		browser
-            .axeInject()
-            .axeRun('html', {
-                rules: {}
-            })
-            .end();
+			.click('#signin')	
+			.assert
+			.visible('.login_wrapper');
+		
+		browser
+			.axeInject()
+			.axeRun('html', {
+				rules: {'color-contrast': { enabled: true }}
+			})
+			.end();
 	});
 	after(commonHooks.after);
 });
