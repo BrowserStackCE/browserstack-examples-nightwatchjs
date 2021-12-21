@@ -41,6 +41,7 @@ This repository contains the following Selenium tests:
 | Product | Apply Lowest to Highest Order By    | This test verifies that the product prices are in ascending order when the product sort "Lowest to Highest" is applied.                                                                                                                                                           | product |
 | User    | Login as User with no image loaded  | This test verifies that the product images load for user: "image_not_loading_user" on the e-commerce application. Since the images do not load, the test case assertion fails.                                                                                                    | user    |
 | User    | Login as User with existing Orders  | This test verifies that existing orders are shown for user: "existing_orders_user"                                                                                                                                                                                                | user    |
+
 ---
 
 ## Test infrastructure environments
@@ -152,7 +153,6 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
 -   Install and start [Docker](https://docs.docker.com/get-docker/).
 -   Note: Docker should be running on the test machine. Ensure Docker Compose is installed as well.
--   Run `docker-compose pull` from the current directory of the repository.
 
 ## Running Your Tests
 
@@ -164,6 +164,10 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
     ```sh
     docker compose --project-directory docker up
+
+    #OR
+
+    docker-compose -f ./docker/docker-compose.yml up
     ```
 
     -   To run the default test scenario (e.g. End to End Scenario) on your own machine, use the following command:
@@ -187,6 +191,10 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
     ```sh
     docker compose --project-directory docker down
+
+    # or
+
+    docker-compose -f ./docker/docker-compose.yml down
     ```
 
 -   Output
@@ -200,7 +208,11 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
     -   Start the docker image first by running the following command:
 
     ```sh
-    docker compose --project-directory docker up -d
+    docker compose --project-directory docker up
+
+    #OR
+
+    docker-compose -f ./docker/docker-compose.yml up
     ```
 
     -   To run the entire test suite in parallel on the docker image, use the following command:
@@ -213,6 +225,10 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
     ```sh
     docker compose --project-directory docker down
+
+    # or
+
+    docker-compose -f ./docker/docker-compose.yml down
     ```
 
 -   Output
