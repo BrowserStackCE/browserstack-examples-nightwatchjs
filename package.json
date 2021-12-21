@@ -26,6 +26,7 @@
 		"browserstack-local": "1.4.8",
 		"chromedriver": "^90.0.0",
 		"eslint": "7.21.0",
-		"nightwatch": "1.5.1"
+		"nightwatch": "1.5.1",
+		"nightwatch-axe-verbose": "^1.1.1"
 	}
 }
