@@ -12,17 +12,20 @@
 	"android": {
 		"os_version": "10.0",
 		"device": "Samsung Galaxy S20",
-		"real_mobile": "true"
+		"real_mobile": "true",
+		"browserName": "chrome"
 	},
 
 	"iphone": {
 		"os_version": "14",
 		"device": "iPhone 12",
-		"real_mobile": "true"
+		"real_mobile": "true",
+		"browserName": "safari"
 	},
 
 	"chrome": {
-		"browser": "chrome",
+		"browserName": "chrome",
+		"browserVersion": "latest",
 		"resolution": "1920x1080",
 		"browserstack.video": true,
 		"goog:chromeOptions": {
@@ -34,18 +37,21 @@
 
 	"firefox": {
 		"browserName": "firefox",
+		"browserVersion": "latest",
 		"resolution": "1920x1080",
 		"browserstack.video": true
 	},
 
 	"edge": {
 		"browserName": "edge",
+		"browserVersion": "latest",
 		"resolution": "1920x1080",
 		"browserstack.video": true
 	},
 
 	"safari": {
 		"browserName": "safari",
+		"browserVersion": "latest",
 		"resolution": "1920x1080",
 		"browserstack.video": true
 	},
@@ -54,18 +60,21 @@
 		"os_version": "10.0",
 		"device": "Samsung Galaxy S20",
 		"real_mobile": "true",
-		"browserstack.local": "true"
+		"browserstack.local": "true",
+		"browserName": "chrome"
 	},
 
 	"iphone_local": {
 		"os_version": "14",
 		"device": "iPhone 12",
 		"real_mobile": "true",
-		"browserstack.local": "true"
+		"browserstack.local": "true",
+		"browserName": "safari"
 	},
 
 	"chrome_local": {
 		"browserName": "chrome",
+		"browserVersion": "latest",
 		"resolution": "1920x1080",
 		"browserstack.video": true,
 		"goog:chromeOptions": {
@@ -80,7 +89,7 @@
 
 	"firefox_local": {
 		"browserName": "firefox",
-		"browser_version": "83",
+		"browserVersion": "latest",
 		"resolution": "1920x1080",
 		"browserstack.video": true,
 		"browserstack.local": true,
@@ -89,6 +98,7 @@
 
 	"edge_local": {
 		"browserName": "edge",
+		"browserVersion": "latest",
 		"resolution": "1920x1080",
 		"browserstack.video": true,
 		"browserstack.local": true,
@@ -97,6 +107,7 @@
 
 	"safari_local": {
 		"browserName": "safari",
+		"browserVersion": "latest",
 		"resolution": "1920x1080",
 		"browserstack.video": true,
 		"browserstack.local": true,
