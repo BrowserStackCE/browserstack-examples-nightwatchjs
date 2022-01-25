@@ -53,7 +53,7 @@ bstack-local-parallel-multiple''',
 
 		stage('Run Test(s)') {
 			browserstack(credentialsId: "${params.BROWSERSTACK_USERNAME}") {
-				sh '''
+				sh label: '', returnStatus: true, script: '''
 					cd test
 					npm run ${TEST_TYPE}
 				'''
@@ -61,7 +61,7 @@ bstack-local-parallel-multiple''',
 		}
 	} catch (e) {
 		currentBuild.result = 'FAILURE'
-		echo e
+		throw e
 	} finally {
 		stage('Publish Results'){
 			browserStackReportPublisher 'automate'
