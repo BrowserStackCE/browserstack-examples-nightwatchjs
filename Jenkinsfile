@@ -53,7 +53,7 @@ bstack-local-parallel-multiple''',
 
 		stage('Run Test(s)') {
 			browserstack(credentialsId: "${params.BROWSERSTACK_USERNAME}") {
-				sh '''
+				sh returnStatus:true,script: '''
 					cd test
 					npm run ${TEST_TYPE}
 				'''
