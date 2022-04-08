@@ -1,12 +1,11 @@
-describe("Login Tests", () => {
+describe("Demo Tests", () => {
 	
 
-	it("Locked Account Test", (browser) => {
-		
-	});
-
-	it("Navigate to Favourites Fails", (browser) => {
-		
+	it("Test", (browser) => {
+		browser
+		.useXpath()
+			.click("//android.view.ViewGroup[@content-desc='menu']")
+			.click("//android.view.ViewGroup[@content-desc='nav-signin']");
 	});
 	
 });
