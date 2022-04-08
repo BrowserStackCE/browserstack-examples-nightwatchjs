@@ -404,6 +404,45 @@ In this section, we will run the test cases to test the internally hosted websit
 
 -   Note: By default, this execution would run maximum 10 test threads in parallel on BrowserStack. Refer to the section ["Configuring the maximum parallel test threads for this repository"](#Configuring-the-maximum-parallel-test-threads-for-this-repository) for updating the parallel thread count based on your requirements.
 
+### Run a native mobile test on BrowserStack
+
+#### Prerequisites
+
+You need to upload the APK or IPA to BrowserStack, before you can run the test on BrowserStack. BrowserStack will provide you with an app_url which you need to use.
+
+You can upload the APK or IPA using a file on your filesystem or using a public url.
+
+cURL command:
+
+```
+curl -u "browserstack_username:browserstack_access_key" \
+-X POST "https://api-cloud.browserstack.com/app-automate/upload" \
+-F "file=@/path/to/ipa/or/apk"
+-F "custom_id=BrowserStackDemoApp"
+```
+
+More information on Upload apps from filesystem, Upload apps using public URL or Define custom ID for app.
+
+In this section, we will run a single test on native mobile app on Browserstack App Automate platform. To change test capabilities for this configuration, please refer to the `mobile.js` file under `/resources/conf/runners` directory.
+
+-   How to run the test?
+
+    -   To run the android test  use the following command:
+
+    ```sh
+    yarn native-android
+    ```
+
+     -   To run the ios test  use the following command:
+
+    ```sh
+    yarn native-ios
+    ```
+
+-   Output
+
+    This run profile executes a single test on a single browser on BrowserStack. Please refer to your [BrowserStack dashboard](https://app-automate.browserstack.com/dashboard) for test results.
+
 ## Generating Allure Reports
 
 -   Generate Report using the following command: `yarn allure:generate`
