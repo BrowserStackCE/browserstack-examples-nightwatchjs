@@ -8,7 +8,7 @@ module.exports = {
 	commands: [
 		{
 			checkIfNOrdersPlaced: function (n) {
-				this.assert.urlEquals(this.url());
+			//	browser.assert.urlEquals(browser.url());
 				return this.expect.elements("@orders").count.to.equal(n);
 			},
 		},

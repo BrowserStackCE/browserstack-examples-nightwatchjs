@@ -12,11 +12,11 @@ module.exports = {
 		{
 			login: function (username) {
 				return this.clearValue("@usernameField")
-					.setValue("@usernameField", username + this.api.Keys.ENTER)
+					.setValue("@usernameField", username + browser.Keys.ENTER)
 					.clearValue("@passwordField")
 					.setValue(
 						"@passwordField",
-						userData[username].password + this.api.Keys.ENTER
+						userData[username].password + browser.Keys.ENTER
 					)
 					.click("#login-btn");
 			},
