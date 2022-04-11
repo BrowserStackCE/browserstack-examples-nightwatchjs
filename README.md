@@ -408,6 +408,8 @@ In this section, we will run the test cases to test the internally hosted websit
 
 #### Prerequisites
 
+For running native app test, ensure that the APK or IPA file is downloaded and placed in the /resources/app folder.
+
 You need to upload the APK or IPA to BrowserStack, before you can run the test on BrowserStack. BrowserStack will provide you with an app_url which you need to use.
 
 You can upload the APK or IPA using a file on your filesystem or using a public url.
