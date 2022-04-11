@@ -1,6 +1,7 @@
 .idea
 allure-report/
 results/
+resources/.DS_Store
 
 # Logs
 logs
