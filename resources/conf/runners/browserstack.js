@@ -61,7 +61,7 @@ for (let key in bsConfig) {
 			break;
 		case "access_key":
 			if (!process.env.BROWSERSTACK_KEY)
-				process.env.BROWSERSTACK_KEY = bsConfig.access_key;
+				process.env.BROWSERSTACK_KEY = bsConfig.key;
 			break;
 		default:
 			if (
@@ -91,6 +91,7 @@ for (let key in bsConfig) {
 			browserCaps["selenium_host"] = baseConfig.selenium.host;
 			browserCaps["selenium_port"] = baseConfig.selenium.port;
 			browserCaps["globals"] = { bsEnv: true };
+			browsers[key]['desiredCapabilities']['browserstack.key'] = bsConfig.key;
 			break;
 	}
 }
@@ -104,7 +105,7 @@ module.exports = {
 			retry_attempts: 3,
 		},
 	},
-
+	
 	test_workers: {
 		enabled: true,
 		workers: 5,
@@ -118,4 +119,5 @@ module.exports = {
 
 		...browsers,
 	},
+	
 };

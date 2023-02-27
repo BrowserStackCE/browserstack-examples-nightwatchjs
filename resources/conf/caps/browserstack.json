@@ -3,8 +3,8 @@
 	"build": "browserstack-examples-nightwatchjs",
 	"server": "hub-cloud.browserstack.com",
 	"defaultUrl": "https://bstackdemo.com",
-	"username": "",
-	"access_key": "",
+	"username": "abishek_8mhZH4",
+	"key": "ppjZyzDxkjVp3HngQn6J",
 	"local_args": {
 		"logFile": "local.log",
 		"verbose": 3
@@ -77,14 +77,9 @@
 		"browserVersion": "latest",
 		"resolution": "1920x1080",
 		"browserstack.video": true,
-		"goog:chromeOptions": {
-			"prefs": {
-				"profile.managed_default_content_settings.geolocation": 1
-			}
-		},
 		"browserstack.local": true,
 		"browserstack.networkLogs": true,
-		"defaultUrl": "http://localhost:3000"
+		"defaultUrl": "http://localhost:45454"
 	},
 
 	"firefox_local": {
