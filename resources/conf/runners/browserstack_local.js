@@ -31,7 +31,7 @@ const browserStack = {
 }
 
 const nightwatchConfigs = {
-  src_folders: ["src/tests/Local"],
+  src_folders: ["src/tests/suites"],
   live_output: true,
   plugins: ['@nightwatch/browserstack'],
       // browserstack plugin settings...
@@ -41,7 +41,11 @@ const nightwatchConfigs = {
 
   test_settings: {
     default: {
-      launch_url: 'https://nightwatchjs.org'
+      launch_url: 'https://localhost:3000',
+      desiredCapabilities:{
+        browserName: 'chrome',
+        ...bstackOptions
+      },
     },
 	
 

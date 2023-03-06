@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="2">
+
+  <testsuite name="login.index.test"
+    errors="0" failures="0" hostname="" id="" package="login" skipped="0"
+    tests="2" time="14.26" timestamp="">
+  
+    <testcase name="Locked Account Test" classname="login.index.test" time="10.46" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Navigate to Favourites Fails" classname="login.index.test" time="3.800" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+    <system-err>
+       Error
+   Error while running &#34;axeInject&#34; command: Command class must implement method .command()
+
+    Error location:
+    /Users/abishek/Documents/VScode/NightWatchJS/browserstack-examples-nightwatchjs/src/tests/suites/accessibility/index.test.js:
+    ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+     15 | 
+     16 | browser
+     17 | .axeInject() 
+     18 | .axeRun(&#39;html&#39;, {
+     19 | rules: {&#39;color-contrast&#39;: { enabled: true }}
+    ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+ Error
+   Error while running &#34;axeInject&#34; command: Command class must implement method .command()
+
+    Error location:
+    /Users/abishek/Documents/VScode/NightWatchJS/browserstack-examples-nightwatchjs/src/tests/suites/accessibility/index.test.js:
+    ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+     15 | 
+     16 | browser
+     17 | .axeInject() 
+     18 | .axeRun(&#39;html&#39;, {
+     19 | rules: {&#39;color-contrast&#39;: { enabled: true }}
+    ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+ Error
+   Error while running &#34;axeInject&#34; command: Command class must implement method .command()
+
+    Error location:
+    /Users/abishek/Documents/VScode/NightWatchJS/browserstack-examples-nightwatchjs/src/tests/suites/accessibility/index.test.js:
+    ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+     15 | 
+     16 | browser
+     17 | .axeInject() 
+     18 | .axeRun(&#39;html&#39;, {
+     19 | rules: {&#39;color-contrast&#39;: { enabled: true }}
+    ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+    </system-err>
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>

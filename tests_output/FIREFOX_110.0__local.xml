@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
-            failures="0"
+            failures="1"
             tests="1">
 
   <testsuite name="local"
-    errors="0" failures="0" hostname="" id="" package="local" skipped="0"
-    tests="1" time="2.231" timestamp="">
+    errors="0" failures="1" hostname="" id="" package="local" skipped="0"
+    tests="1" time="0.6110" timestamp="">
   
-    <testcase name="BrowserStack Local Testing" classname="local" time="2.231" assertions="1">
+    <testcase name="BrowserStack Local Testing" classname="local" time="0.6110" assertions="1">  <failure message="Failed [ok]: (The expression evaluated to a falsy value:
+
+  assertModule[propName].apply(null, this.args)
+) - expected &#34;true&#34; but got: &#34;false&#34; (0ms)">
+  assertModule[propName].apply(null, this.args)
+
+    at NightwatchAPI.&lt;anonymous&gt; (/Users/abishek/Documents/VScode/NightWatchJS/browserstack-examples-nightwatchjs/src/tests/Local/local.js:6:23)</failure>
 
     
     </testcase>
