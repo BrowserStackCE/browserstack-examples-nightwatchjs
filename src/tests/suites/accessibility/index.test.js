@@ -5,7 +5,7 @@ describe("Accessibility Tests", () => {
 
 	beforeEach(commonHooks.beforeEach);
 
-	afterEach(commonHooks.afterEach);
+	
 
 	it("Accessibility Test", (browser) => {
 		browser
@@ -19,5 +19,5 @@ describe("Accessibility Tests", () => {
 				rules: {'color-contrast': { enabled: true }}
 			});
 	});
-	after(commonHooks.after);
+	
 });

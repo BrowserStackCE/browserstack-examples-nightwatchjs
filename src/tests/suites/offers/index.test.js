@@ -6,7 +6,7 @@ describe("Offers Test", () => {
 
 	beforeEach(commonHooks.beforeEach);
 
-	afterEach(commonHooks.afterEach);
+	
 
 	it("Number of Items in offers != 0", (browser) => {
 		browser
@@ -56,5 +56,5 @@ describe("Offers Test", () => {
 			.count.to.not.equal(0);
 	});
 
-	after(commonHooks.after);
+
 });

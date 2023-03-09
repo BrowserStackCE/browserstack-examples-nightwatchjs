@@ -6,17 +6,16 @@
 	"scripts": {
 		"allure:generate": "allure generate -c results/**/",
 		"allure:open": "allure open",
-		"bstack": "nightwatch -c resources/conf/runners/browserstack.js --env browserstack.chrome,browserstack.firefox,browserstack.edge --parallel",
 		"on-prem": "nightwatch -c resources/conf/runners/on-prem.js",
 		"on-prem-parallel": "nightwatch -c resources/conf/runners/on-prem.js --parallel",
-		"bstack-single": "nightwatch -c resources/conf/runners/browserstack.js --env browserstack.chrome --tag single",
+		"bstack-single": "nightwatch -c resources/conf/runners/browserstack.js --env browserstack.chrome --tag e2e",
 		"on-prem-single": "nightwatch -c resources/conf/runners/on-prem.js --tag single",
 		"bstack-parallel": "nightwatch -c resources/conf/runners/browserstack.js --env browserstack.chrome,browserstack.firefox,browserstack.edge --parallel",
 		"on-prem-suite": "nightwatch -c resources/conf/runners/on-prem.js",
 		"bstack-parallel-multiple": "nightwatch -c resources/conf/runners/browserstack.js --env browserstack.chrome,browserstack.firefox,browserstack.edge --parallel",
-		"bstack-local": "nightwatch -c resources/conf/runners/browserstack_local.js --env browserstack.local_firefox",
-		"bstack-local-parallel": "npx nightwatch -c resources/conf/runners/browserstack_local.js -e browserstack.firefox,browserstack.chrome",
-		"bstack-local-parallel-multiple": "node ./resources/conf/runners/browserstack_local.js -c resources/conf/runners/browserstack.js --env chrome_local,edge_local,safari_local,android_local,iphone_local --parallel"
+		"bstack-local": "npx nightwatch -c resources/conf/runners/browserstack_local.js --env browserstack.chrome --tag e2e",
+		"bstack-local-parallel": "nightwatch -c resources/conf/runners/browserstack_local.js -e browserstack.firefox,browserstack.chrome",
+		"bstack-local-parallel-multiple": "nightwatch -c resources/conf/runners/browserstack_local.js --env  browserstack.firefox,browserstack.chrome,browserstack.edge --parallel"
 	},
 	"devDependencies": {
 		"@nightwatch/browserstack": "^0.1.2",

@@ -5,7 +5,7 @@ describe("Product Tests", () => {
 
 	beforeEach(commonHooks.beforeEach);
 
-	afterEach(commonHooks.afterEach);
+	
 
 	it("Apple And Samsung Filter", (browser) => {
 		browser.expect.elements(".shelf-item__title").count.to.equal(25);
@@ -26,5 +26,5 @@ describe("Product Tests", () => {
 			.text.to.equal("399");
 	});
 
-	after(commonHooks.after);
+	
 });

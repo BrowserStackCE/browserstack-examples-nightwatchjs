@@ -5,7 +5,6 @@ const bstackOptions = {
 		"os" : "OS X",
 		"osVersion" : "Big Sur",
 		"buildName" : "browserstack-build-1",
-		"sessionName" : "BStack nightwatch snippet",
 		"seleniumVersion" : "4.0.0",
 		userName: '${BROWSERSTACK_USERNAME}',
 		accessKey: '${BROWSERSTACK_ACCESS_KEY}',
@@ -32,7 +31,14 @@ const bstackOptions = {
   
   const nightwatchConfigs = {
 	src_folders: ["src/tests/suites"],
+	page_objects_path: "src/app/pages/",
+	output_folder: "results",
 	live_output: true,
+	plugins: ['@nightwatch/browserstack'],
+      // browserstack plugin settings...
+               '@nightwatch/browserstack': {
+        browserstackLocal: false, // set true to manage browserstack local tunnel. Defaults to false.
+      },
 	
   
 	test_settings: {
@@ -70,28 +76,7 @@ const bstackOptions = {
 		  ...bstackOptions
 		}
 	  },
-	  // capabilities to run local test on BrowserStack
-	  'browserstack.local': {
-		...browserStack,
-		desiredCapabilities: {
-		  browserName: 'chrome',
-		  ...bstackOptions
-		},
-	  },
-	  'browserstack.local_chrome': {
-		...browserStack,
-		desiredCapabilities: {
-		  browserName: 'chrome',
-		  ...bstackOptions
-		}
-	  },
-	  'browserstack.local_firefox': {
-		...browserStack,
-		desiredCapabilities: {
-		  browserName: 'firefox',
-		  ...bstackOptions
-		}
-	  }
+	  
 	}
   }
   

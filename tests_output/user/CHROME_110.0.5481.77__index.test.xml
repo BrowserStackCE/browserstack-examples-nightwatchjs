@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="3">
+
+  <testsuite name="user.index.test"
+    errors="0" failures="0" hostname="" id="" package="user" skipped="0"
+    tests="3" time="22.25" timestamp="">
+  
+    <testcase name="Number of orders != 0" classname="user.index.test" time="10.78" assertions="5">
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Number of favouriters != 0" classname="user.index.test" time="6.631" assertions="5">
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Item Images not available for &#39;image_not_loading_user&#39;" classname="user.index.test" time="4.833" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+    <system-err>
+       Error
+   Error while running &#34;axeInject&#34; command: Command class must implement method .command()
+
+    Error location:
+    /Users/abishek/Documents/VScode/NightWatchJS/browserstack-examples-nightwatchjs/src/tests/suites/accessibility/index.test.js:
+    ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+     15 | 
+     16 | browser
+     17 | .axeInject() 
+     18 | .axeRun(&#39;html&#39;, {
+     19 | rules: {&#39;color-contrast&#39;: { enabled: true }}
+    ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+    </system-err>
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>
