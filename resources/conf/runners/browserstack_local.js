@@ -47,6 +47,17 @@ const nightwatchConfigs = {
         ...bstackOptions
       },
     },
+    test_runner: {
+			type: "mocha",
+			parallel: true,
+			jobs: 10,
+			timeout: 9000000,
+		},
+    test_workers: {
+      enabled: true,
+      workers: 5,
+      node_options: "inherit",
+    },
 	
 
     browserstack:  {
