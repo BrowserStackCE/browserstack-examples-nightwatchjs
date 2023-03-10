@@ -5,6 +5,7 @@ const bstackOptions = {
 		"os" : "OS X",
 		"osVersion" : "Big Sur",
 		"buildName" : "browserstack-build-1",
+		"sessionName" : "Nightwatch Session"
 		"seleniumVersion" : "4.0.0",
 		userName: '${BROWSERSTACK_USERNAME}',
 		accessKey: '${BROWSERSTACK_ACCESS_KEY}',
@@ -50,7 +51,7 @@ const bstackOptions = {
 		},
 	  },
 	  test_runner: {
-			type: "mocha",
+			type: "nightwatch",
 			parallel: true,
 			jobs: 10,
 			timeout: 9000000,

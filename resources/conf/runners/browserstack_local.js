@@ -5,6 +5,7 @@ const bstackOptions = {
       "os" : "OS X",
       "osVersion" : "Big Sur",
       "buildName" : "browserstack-build-1",
+      "sessionName" : "Nightwatch Local"
       "seleniumVersion" : "4.0.0",
       userName: '${BROWSERSTACK_USERNAME}',
       accessKey: '${BROWSERSTACK_ACCESS_KEY}',
