@@ -7,7 +7,7 @@
 		"allure:generate": "allure generate -c results/**/",
 		"allure:open": "allure open",
 		"on-prem": "nightwatch -c resources/conf/runners/on-prem.js",
-		"on-prem-parallel": "nightwatch -c resources/conf/runners/on-prem.js --parallel",
+		"on-prem-parallel": "nightwatch -c resources/conf/runners/on-prem.js --workers=5",
 		"bstack-single": "nightwatch -c resources/conf/runners/browserstack.js --env browserstack.chrome --tag e2e",
 		"on-prem-single": "nightwatch -c resources/conf/runners/on-prem.js --tag single",
 		"bstack-parallel": "nightwatch -c resources/conf/runners/browserstack.js --env browserstack.chrome,browserstack.firefox,browserstack.edge --workers=5",
