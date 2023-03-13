@@ -10,12 +10,12 @@
 		"on-prem-parallel": "nightwatch -c resources/conf/runners/on-prem.js --parallel",
 		"bstack-single": "nightwatch -c resources/conf/runners/browserstack.js --env browserstack.chrome --tag e2e",
 		"on-prem-single": "nightwatch -c resources/conf/runners/on-prem.js --tag single",
-		"bstack-parallel": "nightwatch -c resources/conf/runners/browserstack.js --env browserstack.chrome,browserstack.firefox,browserstack.edge --parallel",
+		"bstack-parallel": "nightwatch -c resources/conf/runners/browserstack.js --env browserstack.chrome,browserstack.firefox,browserstack.edge --workers=5",
 		"on-prem-suite": "nightwatch -c resources/conf/runners/on-prem.js",
-		"bstack-parallel-multiple": "nightwatch -c resources/conf/runners/browserstack.js --env browserstack.chrome,browserstack.firefox,browserstack.edge --parallel",
+		"bstack-parallel-multiple": "nightwatch -c resources/conf/runners/browserstack.js --env browserstack.chrome,browserstack.firefox,browserstack.edge --workers=5",
 		"bstack-local": "npx nightwatch -c resources/conf/runners/browserstack_local.js --env browserstack.chrome --tag e2e",
-		"bstack-local-parallel": "nightwatch -c resources/conf/runners/browserstack_local.js -e browserstack.firefox,browserstack.chrome",
-		"bstack-local-parallel-multiple": "nightwatch -c resources/conf/runners/browserstack_local.js --env  browserstack.firefox,browserstack.chrome,browserstack.edge --parallel"
+		"bstack-local-parallel": "nightwatch -c resources/conf/runners/browserstack_local.js -e browserstack.firefox,browserstack.chrome --workers=5",
+		"bstack-local-parallel-multiple": "nightwatch -c resources/conf/runners/browserstack_local.js --env  browserstack.firefox,browserstack.chrome,browserstack.edge --workers=5"
 	},
 	"devDependencies": {
 		"@nightwatch/browserstack": "^0.1.3",

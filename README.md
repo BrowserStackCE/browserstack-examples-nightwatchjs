@@ -132,7 +132,7 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
     set BROWSERSTACK_ACCESS_KEY=<browserstack-access-key>
     ```
 
-    Alternatively, you can also hardcode username and access_key objects in the [browserstack.json](resources/conf/caps/browserstack.json) file.
+    Alternatively, you can also hardcode username and access_key objects in the [browserstack.js](resources/conf/runners/browserstack.js) file and [browserstack_local.js](resources/conf/runners/browserstack_local.js) file.
 
 Note:
 
