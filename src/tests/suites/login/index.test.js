@@ -6,7 +6,7 @@ describe("Login Tests", () => {
 
 	beforeEach(commonHooks.beforeEach);
 
-	afterEach(commonHooks.afterEach);
+	
 
 	it("Locked Account Test", (browser) => {
 		browser
@@ -25,5 +25,5 @@ describe("Login Tests", () => {
 			.assert.urlEquals(browser.launchUrl + "/signin?favourites=true");
 	});
 
-	after(commonHooks.after);
+	
 });

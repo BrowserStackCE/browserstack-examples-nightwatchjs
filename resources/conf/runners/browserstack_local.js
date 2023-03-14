@@ -1,58 +1,92 @@
-#!/usr/bin/env node
 
-const Nightwatch = require("nightwatch");
-const browserstack = require("browserstack-local");
-const Capabilities = require("../caps/browserstack.json");
-require("dotenv").config();
 
-let bs_local;
-
-try {
-	const accessKey =
-		process.env.BROWSERSTACK_ACCESS_KEY || Capabilities.access_key;
-	const pathToNightwatchExecutable =
-		"./node_modules/nightwatch/bin/nightwatch";
-	require.main.filename = pathToNightwatchExecutable;
-	process.mainModule.filename = pathToNightwatchExecutable;
-	// Code to start browserstack local before start of test
-	console.log("Connecting local");
-	Nightwatch.bs_local = bs_local = new browserstack.Local();
-	let localIdentifier;
-	if (Capabilities.local_args["localIdentifier"]) {
-		localIdentifier = Capabilities.local_args["localIdentifier"];
-	} else if (Capabilities.local_args["local-identifier"]) {
-		localIdentifier = Capabilities.local_args["local-identifier"];
-	}
-	localIdentifier =
-		process.env.BROWSERSTACK_LOCAL_IDENTIFIER ||
-		localIdentifier ||
-		new Date().getTime();
-	process.env.BROWSERSTACK_LOCAL_IDENTIFIER = localIdentifier;
-	bs_local.start(
-		{
-			key: accessKey,
-			...Capabilities.local_args,
-			localIdentifier: localIdentifier,
-		},
-		function (error) {
-			if (error) throw error;
-
-			console.log("Connected. Now testing...");
-			Nightwatch.cli(function (argv) {
-				Nightwatch.CliRunner(argv)
-					.setup(null, function () {
-						// Code to stop browserstack local after end of parallel test
-						bs_local.stop(function () {});
-					})
-					.runTests(function () {
-						// Code to stop browserstack local after end of single test
-						bs_local.stop(function () {});
-					});
-			});
-		}
-	);
-} catch (ex) {
-	console.log("There was an error while starting the test runner:\n\n");
-	process.stderr.write(ex.stack + "\n");
-	process.exit(2);
+const bstackOptions = {
+  'bstack:options' : {
+      "os" : "OS X",
+      "osVersion" : "Big Sur",
+      "buildName" : "browserstack-build-1",
+      "sessionName" : "NightWatch Local Testing",
+      "seleniumVersion" : "4.0.0",
+      userName: '${BROWSERSTACK_USERNAME}',
+      accessKey: '${BROWSERSTACK_ACCESS_KEY}',
+  },
 }
+
+
+
+const browserStack = {
+  webdriver: {
+    start_process: false
+  },
+
+  selenium: {
+    host: 'hub.browserstack.com',
+    port: 443
+  },
+
+  desiredCapabilities: {
+      browserName: 'chrome',
+    ...bstackOptions
+  }
+}
+
+const nightwatchConfigs = {
+  src_folders: ["src/tests/suites"],
+  page_objects_path: "src/app/pages/",
+  live_output: true,
+  plugins: ['@nightwatch/browserstack'],
+      // browserstack plugin settings...
+               '@nightwatch/browserstack': {
+        browserstackLocal: true, // set true to manage browserstack local tunnel. Defaults to false.
+      },
+
+  test_settings: {
+    default: {
+      launch_url: 'http://localhost:3000',
+      desiredCapabilities:{
+        browserName: 'chrome',
+        ...bstackOptions
+      },
+    },
+    test_runner: {
+			type: "mocha",
+			parallel: true,
+			jobs: 10,
+			timeout: 9000000,
+		},
+    test_workers: {
+      enabled: true,
+      workers: 5,
+      node_options: "inherit",
+    },
+	
+
+    browserstack:  {
+      ...browserStack
+    },
+
+    "browserstack.chrome": {
+      ...browserStack,
+      desiredCapabilities:{
+        browserName: 'chrome',
+        ...bstackOptions
+      }
+    },
+    "browserstack.firefox": {
+      ...browserStack,
+      desiredCapabilities:{
+        browserName: 'firefox',
+        ...bstackOptions
+      }
+    },
+    "browserstack.edge": {
+      ...browserStack,
+      desiredCapabilities:{
+        browserName: 'Edge',
+        ...bstackOptions
+      }
+    },
+  }
+}
+
+module.exports = nightwatchConfigs;

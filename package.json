@@ -6,27 +6,24 @@
 	"scripts": {
 		"allure:generate": "allure generate -c results/**/",
 		"allure:open": "allure open",
-		"bstack": "nightwatch -c resources/conf/runners/browserstack.js --env chrome,edge,safari,android,iphone --parallel",
-		"docker": "nightwatch -c resources/conf/runners/docker.js --env chrome,firefox",
 		"on-prem": "nightwatch -c resources/conf/runners/on-prem.js",
-		"on-prem-parallel": "nightwatch -c resources/conf/runners/on-prem.js --parallel",
-		"bstack-single": "nightwatch -c resources/conf/runners/browserstack.js --env chrome --tag single",
-		"docker-single": "nightwatch -c resources/conf/runners/docker.js --env chrome --tag single",
+		"on-prem-parallel": "nightwatch -c resources/conf/runners/on-prem.js --workers=5",
+		"bstack-single": "nightwatch -c resources/conf/runners/browserstack.js --env browserstack.chrome --tag e2e",
 		"on-prem-single": "nightwatch -c resources/conf/runners/on-prem.js --tag single",
-		"bstack-parallel": "nightwatch -c resources/conf/runners/browserstack.js --env chrome --parallel",
-		"docker-parallel": "nightwatch -c resources/conf/runners/docker.js --env chrome --parallel",
+		"bstack-parallel": "nightwatch -c resources/conf/runners/browserstack.js --env browserstack.chrome,browserstack.firefox,browserstack.edge --workers=5",
 		"on-prem-suite": "nightwatch -c resources/conf/runners/on-prem.js",
-		"bstack-parallel-multiple": "nightwatch -c resources/conf/runners/browserstack.js --env chrome,edge,safari,android,iphone --parallel",
-		"bstack-local": "node ./resources/conf/runners/browserstack_local.js -c resources/conf/runners/browserstack.js --env chrome_local --tag single",
-		"bstack-local-parallel": "node ./resources/conf/runners/browserstack_local.js -c resources/conf/runners/browserstack.js --env chrome_local --parallel",
-		"bstack-local-parallel-multiple": "node ./resources/conf/runners/browserstack_local.js -c resources/conf/runners/browserstack.js --env chrome_local,edge_local,safari_local,android_local,iphone_local --parallel"
+		"bstack-parallel-multiple": "nightwatch -c resources/conf/runners/browserstack.js --env browserstack.chrome,browserstack.firefox,browserstack.edge --workers=5",
+		"bstack-local": "npx nightwatch -c resources/conf/runners/browserstack_local.js --env browserstack.chrome --tag e2e",
+		"bstack-local-parallel": "nightwatch -c resources/conf/runners/browserstack_local.js -e browserstack.firefox,browserstack.chrome --workers=5",
+		"bstack-local-parallel-multiple": "nightwatch -c resources/conf/runners/browserstack_local.js --env  browserstack.firefox,browserstack.chrome,browserstack.edge --workers=5"
 	},
 	"devDependencies": {
+		"@nightwatch/browserstack": "^0.1.3",
 		"allure-commandline": "2.13.8",
 		"browserstack-local": "1.4.8",
 		"chromedriver": "^90.0.0",
 		"eslint": "7.21.0",
-		"nightwatch": "1.5.1",
+		"nightwatch": "^2.6.15",
 		"nightwatch-axe-verbose": "^1.1.1"
 	}
 }

@@ -6,7 +6,7 @@ describe("User Tests", () => {
 
 	beforeEach(commonHooks.beforeEach);
 
-	afterEach(commonHooks.afterEach);
+	
 
 	it("Number of orders != 0", (browser) => {
 		browser
@@ -70,5 +70,5 @@ describe("User Tests", () => {
 			.count.to.equal(25);
 	});
 
-	after(commonHooks.after);
+	
 });

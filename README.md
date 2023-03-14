@@ -47,44 +47,9 @@ This repository contains the following Selenium tests:
 ## Test infrastructure environments
 
 -   [On-premise](#on-premise)
--   [Docker](#docker)
 -   [BrowserStack](#browserstack)
 
-## Configuring the maximum parallel test threads for this repository
 
-For all the parallel run configuration profiles, you can configure the maximum parallel test threads by changing the settings below.
-
--   Docker
-
-    resources/conf/runners/docker.js
-
-    ```js
-    module.exports = {
-     ...
-
-     test_workers: {
-       ...
-      workers: 5, // change this attribute
-       ...
-     },
-    ...
-    ```
-
--   BrowserStack
-
-    resources/conf/runners/browserstack.js
-
-    ```js
-    module.exports = {
-     ...
-
-     test_workers: {
-       ...
-      workers: 5, // change this attribute
-       ...
-     },
-    ...
-    ```
 
 ## Test Reporting
 
@@ -143,101 +108,6 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
 
     This run profile executes the entire test suite sequentially on a single browser, on your own machine.
 
----
-
-# Docker
-
-[Docker](https://docs.docker.com/get-started/overview/) is an open source platform that provides the ability to package and test applications in an isolated environment called containers.
-
-## Docker Prerequisites
-
--   Install and start [Docker](https://docs.docker.com/get-docker/).
--   Note: Docker should be running on the test machine. Ensure Docker Compose is installed as well.
-
-## Running Your Tests
-
-### Run a specific test on the docker infrastructure
-
--   How to run the test?
-
-    -   Start the Docker by running the following command:
-
-    ```sh
-    docker compose --project-directory docker up
-
-    #OR
-
-    docker-compose -f ./docker/docker-compose.yml up
-    ```
-
-    -   To run the default test scenario (e.g. End to End Scenario) on your own machine, use the following command:
-
-    ```sh
-    yarn docker-single
-    ```
-
-    To run a specific test file, use the following command with the additional 'tag-name' argument:
-
-    ```sh
-    yarn docker --tag <tag-name>
-    # yarn docker --tag user
-    ```
-
-    where, the argument 'tag-name' can be any tag configured in this repository.
-
-    E.g. "user", "login" or any other tag as outlined in [About the tests in this repository](#About-the-tests-in-this-repository) section.
-
-    -   After tests are complete, you can stop the Docker by running the following command:
-
-    ```sh
-    docker compose --project-directory docker down
-
-    # or
-
-    docker-compose -f ./docker/docker-compose.yml down
-    ```
-
--   Output
-
-    This run profile executes a specific test scenario on a single browser deployed on a docker image.
-
-### Run the entire test suite in parallel using Docker
-
--   How to run the test?
-
-    -   Start the docker image first by running the following command:
-
-    ```sh
-    docker compose --project-directory docker up
-
-    #OR
-
-    docker-compose -f ./docker/docker-compose.yml up
-    ```
-
-    -   To run the entire test suite in parallel on the docker image, use the following command:
-
-    ```sh
-    yarn docker-parallel
-    ```
-
-    -   After the tests are complete stop the Selenium grid by running the following command:
-
-    ```sh
-    docker compose --project-directory docker down
-
-    # or
-
-    docker-compose -f ./docker/docker-compose.yml down
-    ```
-
--   Output
-
-    This run profile executes the entire test suite in parallel on a single browser, deployed on a docker image.
-
--   Note: By default, this execution would run maximum 2 test threads in parallel on Docker. Refer to the section ["Configuring the maximum parallel test threads for this repository"](#Configuring-the-maximum-parallel-test-threads-for-this-repository) for updating the parallel thread count based on your requirements.
-
----
 
 # BrowserStack
 
@@ -262,18 +132,18 @@ Note: The ChromeDriver version must match the Chrome browser version on your mac
     set BROWSERSTACK_ACCESS_KEY=<browserstack-access-key>
     ```
 
-    Alternatively, you can also hardcode username and access_key objects in the [browserstack.json](resources/conf/caps/browserstack.json) file.
+    Alternatively, you can also hardcode username and access_key objects in the [browserstack.js](resources/conf/runners/browserstack.js) file and [browserstack_local.js](resources/conf/runners/browserstack_local.js) file.
 
 Note:
 
--   We have configured a list of test capabilities in the [browserstack.json](resources/conf/caps/browserstack.json) file. You can certainly update them based on your device / browser test requirements.
+-   We have configured a list of test capabilities in the [bstackOptions](resources/conf/runners/browserstack.js or resources/conf/runners/browserstack_local.js) file. You can certainly update them based on your device / browser test requirements.
 -   The exact test capability values can be easily identified using the [Browserstack Capability Generator](https://browserstack.com/automate/capabilities)
 
 ## Running Your Tests
 
 ### Run a specific test on BrowserStack
 
-In this section, we will run a single test on Chrome browser on Browserstack. To change test capabilities for this configuration, please refer to the `single` object in `caps.json` file.
+In this section, we will run a single test on Chrome browser on Browserstack. 
 
 -   How to run the test?
 
@@ -300,7 +170,7 @@ In this section, we will run a single test on Chrome browser on Browserstack. To
 
 ### Run the entire test suite in parallel on a single BrowserStack browser
 
-In this section, we will run the tests in parallel on a single browser on Browserstack. Refer to `single` object in `caps.json` file to change test capabilities for this configuration.
+In this section, we will run the tests in parallel on a single browser on Browserstack. 
 
 -   How to run the test?
 
@@ -314,11 +184,10 @@ In this section, we will run the tests in parallel on a single browser on Browse
 
     This run profile executes the entire test suite in parallel on a single BrowserStack browser. Please refer to your [BrowserStack dashboard](https://automate.browserstack.com/) for test results.
 
-    -   Note: By default, this execution would run maximum 10 test threads in parallel on BrowserStack. Refer to the section ["Configuring the maximum parallel test threads for this repository"](#Configuring-the-maximum-parallel-test-threads-for-this-repository) for updating the parallel thread count based on your requirements.
 
 ### Run the entire test suite in parallel on multiple BrowserStack browsers
 
-In this section, we will run the tests in parallel on multiple browsers on Browserstack. Refer to the `parallel` object in `caps.json` file to change test capabilities for this configuration.
+In this section, we will run the tests in parallel on multiple browsers on Browserstack. 
 
 -   How to run the test?
 
@@ -337,12 +206,11 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
     git clone https://github.com/browserstack/browserstack-demo-app
     ```
 -   Please follow the README.md on the BrowserStack demo application repository to install and start the dev server on localhost.
--   In this section, we will run a single test case to test the BrowserStack Demo app hosted on your local machine i.e. localhost. Refer to the `<browser/device>_local` object in `caps.json` file to change test capabilities for this configuration.
--   Note: You may need to provide additional BrowserStackLocal arguments to successfully connect your localhost environment with BrowserStack infrastructure. (e.g if you are behind firewalls, proxy or VPN).
+-   In this section, we will run a single test case to test the BrowserStack Demo app hosted on your local machine i.e. localhost. 
 -   Further details for successfully creating a BrowserStackLocal connection can be found here:
 
     -   [Local Testing with Automate](https://www.browserstack.com/local-testing/automate)
-    -   [BrowserStackLocal Node.js GitHub](https://github.com/browserstack/browserstack-local-nodejs)
+    -   [NightWatch BrowserStack Plugin](https://www.npmjs.com/package/@nightwatch/browserstack)
 
 ### [Web application hosted on internal environment] Run a specific test on BrowserStack using BrowserStackLocal
 
@@ -357,12 +225,9 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
     To run a specific test file, use the following command with the additional 'tag-name' argument:
 
     ```sh
-    node ./resources/conf/runners/browserstack_local.js -c resources/conf/runners/browserstack.js --tag <tag-name>
+    nightwatch -c resources/conf/runners/browserstack_local.js --env browserstack.local_firefox
     ```
 
-    where, the argument 'tag-name' can be any tag configured in this repository.
-
-    E.g. "user", "login" or any other tag as outlined in [About the tests in this repository](#About-the-tests-in-this-repository) section.
 
 -   Output
 
@@ -370,7 +235,7 @@ In this section, we will run the tests in parallel on multiple browsers on Brows
 
 ### [Web application hosted on internal environment] Run the entire test suite in parallel on a single BrowserStack browser using BrowserStackLocal
 
-In this section, we will run the test cases to test the internally hosted website in parallel on a single browser on Browserstack. Refer to the `chrome` object in `caps/browserstack.json` file to change test capabilities for this configuration.
+In this section, we will run the test cases to test the internally hosted website in parallel on a single browser on Browserstack. 
 
 -   How to run the test?
 
@@ -388,7 +253,7 @@ In this section, we will run the test cases to test the internally hosted websit
 
 ### [Web application hosted on internal environment] Run the entire test suite in parallel on multiple BrowserStack browser using BrowserStackLocal
 
-In this section, we will run the test cases to test the internally hosted website in parallel on multiple browsers on Browserstack. Refer to the `<browser/device>_local` object in `caps/browserstack.json` file to change test capabilities for this configuration.
+In this section, we will run the test cases to test the internally hosted website in parallel on multiple browsers on Browserstack. 
 
 -   How to run the test?
 
@@ -404,10 +269,6 @@ In this section, we will run the test cases to test the internally hosted websit
 
 -   Note: By default, this execution would run maximum 10 test threads in parallel on BrowserStack. Refer to the section ["Configuring the maximum parallel test threads for this repository"](#Configuring-the-maximum-parallel-test-threads-for-this-repository) for updating the parallel thread count based on your requirements.
 
-## Generating Allure Reports
-
--   Generate Report using the following command: `yarn allure:generate`
--   Serve the Allure report on a server: `yarn allure:open`
 
 ## Additional Resources
 
@@ -419,12 +280,4 @@ In this section, we will run the test cases to test the internally hosted websit
 -   Understand how many parallel sessions you need by using our [Parallel Test Calculator](https://www.browserstack.com/automate/parallel-calculator?ref=github)
 -   For testing public web applications behind IP restriction, [Inbound IP Whitelisting](https://www.browserstack.com/local-testing/inbound-ip-whitelisting) can be enabled with the [BrowserStack Enterprise](https://www.browserstack.com/enterprise) offering
 
-## Observations
 
--   Do not use "." in the naming convention for any browsers or devices as it might break nightwatchjs' engine to start sessions or run them correctly.
--   There are few occurrences of `pause` method being used in some of the scripts as a temporary measure to avoid flaky test execution. We plan to remove all occurrences of these hardcoded `pause` methods in the upcoming patch releases.
-
-## Open Issues
-
--   When running all the tests in parallel, there is some flakiness observed in mobile devices where in some commands are skipped or not executed at all.
--   Currently Nightwatch does not allow to control the maximum threads that should be spawned for tests running across different browsers in parallel. So when you run `yarn bstack-local-parallel-multiple` and `yarn bstack-parallel-multiple` commands, it will spawn 25 test sessions (5 spec files across 5 browsers).
