@@ -20,4 +20,17 @@ module.exports = {
 			},
 		},
 	},
+	plugins: ['@nightwatch/browserstack'],
+
+'@nightwatch/browserstack': {
+    test_observability: {
+		enabled: true,
+		user: process.env.BROWSERSTACK_USERNAME,
+		key:  process.env.BROWSERSTACK_ACCESS_KEY,
+		projectName: "browserstack-examples-nightwatchjs-project",
+		buildName: "browserstack-examples-nightwatchjs-build",
+		}
+   
+  },
+	
 };
