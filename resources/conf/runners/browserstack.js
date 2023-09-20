@@ -39,6 +39,13 @@ const bstackOptions = {
       // browserstack plugin settings...
                '@nightwatch/browserstack': {
         browserstackLocal: false, // set true to manage browserstack local tunnel. Defaults to false.
+		test_observability: {
+			enabled: true,
+			user: process.env.BROWSERSTACK_USERNAME,
+			key:  process.env.BROWSERSTACK_ACCESS_KEY,
+			projectName: "browserstack-examples-nightwatchjs-project",
+			buildName: "browserstack-examples-nightwatchjs-build",
+			}
       },
 	
   

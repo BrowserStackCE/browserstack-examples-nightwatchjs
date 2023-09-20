@@ -269,6 +269,37 @@ In this section, we will run the test cases to test the internally hosted websit
 
 -   Note: By default, this execution would run maximum 10 test threads in parallel on BrowserStack. Refer to the section ["Configuring the maximum parallel test threads for this repository"](#Configuring-the-maximum-parallel-test-threads-for-this-repository) for updating the parallel thread count based on your requirements.
 
+## Browserstack Test Observability
+
+Test Observability is a reporting tool that helps you isolate the genuine test failures after eliminating noise from flaky and always failing tests and also helps with root cause analysis of failed tests.
+
+With Test Observability, you can not only complete your run verification in minutes, you will also be empowered with rich historical data to understand the overall health of your test suites, uncover burning issues impacting the stability of your tests, and help you optimize your tests. 
+
+You can learn more about [what the product has to offer and why you should be using it](https://www.browserstack.com/docs/test-observability/overview/what-is-test-observability).
+
+Please add the following code snippet to your **nightwatch.conf.js**.
+```js
+ module.exports = {
+    //...
+plugins: ['@nightwatch/browserstack'],
+
+'@nightwatch/browserstack': {
+    test_observability: {
+    enabled: true,
+    user: process.env.BROWSERSTACK_USERNAME,
+    key: process.env.BROWSERSTACK_ACCESS_KEY,
+    projectName: "Enter Static Project Name Here",
+    buildName: "Enter Static Project Name Here",
+    buildTag: ["Custom Tag 1","Custom Tag 2"]
+    }
+   
+  },
+
+    //...
+  };
+```
+To get started with the Test Observability integration with your Nightwatch Project, please refer to this [documentation](https://www.browserstack.com/docs/test-observability/quick-start/nightwatch).
+
 
 ## Additional Resources
 
